@@ -1,0 +1,20 @@
+.menu_admin{
+    background-color:rgba(120, 186, 230, 0.877) ;
+    width: 600px;
+    height: 50px;
+    border-radius: 20px;
+    margin-left: 480px;
+    margin-top: 90px;
+}
+.btn{
+ margin-left: 1400px;
+ margin-top: -150px;
+ 
+    
+}
+.cerrar_admin img{
+    height: 50px;
+    width: 50px;
+    margin-top: -200px;
+    margin-left: 1430px;
+}

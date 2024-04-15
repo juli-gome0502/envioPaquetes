@@ -1,0 +1,1 @@
+// como rellenar los campos que estan en guiadeenvio.php con solo buscar el numero de documento ?
