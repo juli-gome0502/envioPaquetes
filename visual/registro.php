@@ -8,6 +8,7 @@
    /*  include '../conexion/conexion_be.php'; */
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +42,10 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
+                
                 <form action="../modelo/login_usuario_be.php" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
+                   
                     <input type="text" placeholder="Usuario" name="usuario" id="usuario" require>
                     <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" require>
                     <button name="entrar">Entrar</button>

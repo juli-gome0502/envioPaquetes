@@ -13,12 +13,12 @@
     $contrasena = $_POST['contrasena'];
     
     /* encriptamiento contraseña  */
-    $contrasena = hash('sha512', $contrasena);
+/*     $contrasena = hash('sha512', $contrasena); */
 
     $query = "INSERT INTO usuario(nombre_us,apellido_us, n_Documento_us,tipo_documento,telefono, Direccion, correo_electronico_us,usuario,contrasena)
     VALUES('$nombre_us', '$apellido_us', '$n_Documento_us',  '$tipo_documento','$telefono_us','$Direccion','$correo_electronico_us','$usuario','$contrasena')";
 
-
+    $conexion = mysqli_connect("localhost", "root", "", "bd_safe_delivery2");
     /* verificar que el correo no se repita */
 
     $verificar_dni = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo_electronico_us='$correo_electronico_us' ");

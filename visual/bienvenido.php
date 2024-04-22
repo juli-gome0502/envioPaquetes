@@ -1,5 +1,5 @@
 <?php
-   /*  session_start();
+   session_start();
     if(!isset($_SESSION['usuario'])){
         echo'
         <script>
@@ -11,7 +11,7 @@
         session_destroy();
         die();
 
-    } */
+    } 
 
 ?>
 <!DOCTYPE html>
@@ -99,10 +99,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/4aZT6UO2/O+0495CT4tG9kXH7Zk//mkkn/1M0" crossorigin="anonymous"></script>
     
     <img class="usuaico" src="../img/usuario.png" alt="">
-    <button type="button" id="cerrar" class="btn btn-outline-info" href="../visual/cerrar_sesion.php" role="button">Cerrar sesion</button>
-    <button type="button" class="btn btn-primary" href="../visual/login.php">Otros</button>
-    
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <a class="btn btn-primary" id="cerrar" href="../controlador/cerrar_sesion.php" role="button">Cerrar sesion</a>
+ 
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
 </body>
 </html>
