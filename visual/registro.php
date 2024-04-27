@@ -58,9 +58,35 @@
                     <input type="text" placeholder="Apellido completo" name="apellido_us"  required>
                     
                     <input type="number" placeholder="Documento" name="n_Documento_us"  required>
-                    <input type="text" placeholder="Tipo documento" name="tipo_documento"  required>
-                    
+                    <?php
+                        $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
 
+                        // Comprobar la conexión
+                        if ($conexion->connect_error) {
+                            die('Error de conexión: ' . $conexion->connect_error);
+                        }
+
+                    ?>
+                    
+                        <select name="nombre_tipo_documento" id="nombre_tipo_documento" class="form-control">
+                            <option value="selecccionar"></option>
+                            <?php
+                              $query = mysqli_query($conexion, "SELECT nombre_tipo_documento FROM tipo_documento");
+                              if ($resultado = mysqli_num_rows($query) > 0) {
+                                while ($fila = mysqli_fetch_array($query)) {
+                                  ?>
+                                  <option value="($nombre_tipo_documento[nombre_tipo_documento])" name="">
+                                    <?php echo $fila["nombre_tipo_documento"]; ?>
+                                  </option>
+                                  <?php
+                                }
+                              } else {
+                                // Handle case where no results found (optional)
+                                echo '<option value="">No hay tipos de documento disponibles</option>';
+                              }
+                              mysqli_close($conexion);
+                            ?>
+                          </select>
                    
                     <input type="number" placeholder="Teléfono" name="telefono"  required>
                     <input type="text" placeholder="Dirección" name="Direccion"  required>

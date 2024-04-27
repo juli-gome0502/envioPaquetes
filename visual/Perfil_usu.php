@@ -1,7 +1,34 @@
+<?php
+  session_start();
+
+  if (!isset($_SESSION['usuario'])) {
+      // User is not logged in, redirect to login page
+      header("Location: ..visual/bienvenido.php"); 
+      exit;
+      
+  }
+  $id = $_SESSION['id_usuario']; // Corregido el nombre de la variable de sesión
+
+  $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
+  if ($conexion->connect_error) {
+      die("Error de conexión: " . $conexion->connect_error);
+  }
+
+  $sql = "SELECT * FROM usuario WHERE id_usuario = $id"; // Consulta corregida
+  $resultado = $conexion->query($sql);
+
+  // Comprobar si se encontraron resultados
+  if ($resultado->num_rows > 0) {
+      while ($user_data = $resultado->fetch_assoc()) {
+          // Aquí se muestra el formulario con los datos del usuario
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="../css/perfil_usuario.css">
@@ -34,51 +61,67 @@
 
   </ul>
   <img src="../img/safe-delivery.png" alt="">
+  
   <div class="container-">
-    <div>
-      <label for="">Nombre Completo</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Apellido Completo</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Documento</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Tipo Documento</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Teléfono</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Correo Electronico</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Usuario</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
-    <div>
-      <label for="">Contraseña</label>
-      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" disabled>
-    </div>
-    <br>
+    <form action="" method="POST">
+      
+        <div>
+          <label for="">Nombre Completo</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['nombre_us'] ?>" >
+        </div>
+        <br>
+        <div>
+          <label for="">Apellido Completo</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['apellido_us'] ?>" >
+        </div>
+        <br>
+        <div>
+          <label for="">Documento</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['n_documento_us'] ?>" >
+        </div>
+        <br>
+        <div>
+          <label for="">Tipo Documento</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['tipo_documento'] ?>" >
+        </div>
+        <br>
+        <div>
+          <label for="">Teléfono</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['telefono'] ?>">
+        </div>
+        <br>
+        <div>
+          <label for="">Correo Electronico</label>
+          <input disabled type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['correo_electronico_us'] ?>">
+
+        </div>
+        <br>
+        <div>
+          <label for="">Usuario</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['usuario']?>" >
+        </div>
+        <br>
+        <div>
+          <label for="">Contraseña</label>
+          <input disabled type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value="<?= $user_data['contrasena'] ?>" >
+        </div>
+        <br>
+      
+    
+  
+    </form>
   </div>
   <div class="perfico"><img src="../img/user-solid.png" alt=""></div>
   <div class="icouser"><img src="../img/usuario.png" alt=""></div>
-  <button type="button" id="cerrar" class="btn btn-outline-info" href="../visual/cerrar_sesion.php" role="button">Cerrar sesion</button>
+  <a class="btn btn-primary" id="cerrar" href="../controlador/cerrar_sesion.php" role="button">Cerrar sesion</a>
+
   <button type="button" id="editarbtn" class="btn btn-info">Editar</button>
 </body>
 </html>
+<?php
+    }
+  } else {
+      echo "No se encontraron datos del usuario";
+  }
+  $conexion->close();
+?>

@@ -4,8 +4,7 @@
     $nombre_us =$_POST['nombre_us'];
     $apellido_us = $_POST['apellido_us'];
     $n_Documento_us = $_POST['n_Documento_us'];
-    $tipo_documento = $_POST['tipo_documento'];
- 
+    $nombre_tipo_documento = $_POST['nombre_tipo_documento'];
     $Direccion = $_POST['Direccion'];
     $telefono_us = $_POST['telefono'];
     $correo_electronico_us = $_POST['correo_electronico_us'];
@@ -15,8 +14,8 @@
     /* encriptamiento contraseña  */
 /*     $contrasena = hash('sha512', $contrasena); */
 
-    $query = "INSERT INTO usuario(nombre_us,apellido_us, n_Documento_us,tipo_documento,telefono, Direccion, correo_electronico_us,usuario,contrasena)
-    VALUES('$nombre_us', '$apellido_us', '$n_Documento_us',  '$tipo_documento','$telefono_us','$Direccion','$correo_electronico_us','$usuario','$contrasena')";
+    $query = "INSERT INTO usuario(nombre_us,apellido_us, n_Documento_us,nombre_tipo_documento,telefono, Direccion, correo_electronico_us,usuario,contrasena)
+    VALUES('$nombre_us', '$apellido_us', '$n_Documento_us',  '$nombre_tipo_documento','$telefono_us','$Direccion','$correo_electronico_us','$usuario','$contrasena')";
 
     $conexion = mysqli_connect("localhost", "root", "", "bd_safe_delivery2");
     /* verificar que el correo no se repita */
