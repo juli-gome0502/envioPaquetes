@@ -96,7 +96,8 @@
         </P>
     </div>
     
-    <input type="button" id="cerrar" value="salir" onclick="window.location.href='../visual/cerrar_sesion.php'">
+    <button type="button" id="cerrar" class="btn" onclick="window.location.href='../visual/cerrar_sesion.php'">Salir</button>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/4aZT6UO2/O+0495CT4tG9kXH7Zk//mkkn/1M0" crossorigin="anonymous"></script>
     
