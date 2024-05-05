@@ -40,6 +40,3 @@ if ($resultado->num_rows > 0) {
 $stmt->close();
 $db->close();
 ?>
-
-
-

@@ -122,6 +122,7 @@ main{
     font-size: 16px;
     outline: none;
 }
+
 .form-group{
     width: 100%;
     margin-top: 20px;
@@ -130,6 +131,36 @@ main{
     background: #F2F2F2;
     font-size: 16px;
     outline: none;
+}
+/* Estilos para el select */
+select {
+    /* Establece el mismo tamaño de fuente y altura que el input */
+    font-size: 16px;
+    height: 30px;
+    /* Alinea el texto verticalmente en el centro */
+    vertical-align: middle;
+    /* Establece el mismo color de fondo y borde que el input */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    /* Agrega bordes redondeados */
+    border-radius: 5px;
+    /* Cambia el cursor al pasar sobre el select */
+    cursor: pointer;
+    /* Ajusta el espaciado interno para que sea similar al input */
+    padding: 5px;
+}
+
+/* Estilos para las opciones del select */
+select option {
+    /* Establece el mismo tamaño de fuente y altura que el input */
+    font-size: 16px;
+    height: 30px;
+    /* Alinea el texto verticalmente en el centro */
+    vertical-align: middle;
+    /* Establece el mismo color de fondo que el input */
+    background-color: #f2f2f2;
+    /* Cambia el cursor al pasar sobre las opciones */
+    cursor: pointer;
 }
 
 .contenedor__login-register form button{
