@@ -6,85 +6,68 @@
 /* Estilos para el formulario */
 body {
     font-family: Arial, sans-serif;
+    padding-top: 100px;
+    padding-left: 550px;
+    
 }
+
 
 h2 {
     text-align: center;
 }
+
 form {
     margin-top: 20px;
 }
+
 label {
     font-weight: bold;
 }
-input[type="text"],
+
 input[type="text"],
 select,
 textarea {
-    width: 50%;
+    width: 57%; /* Ancho del 100% para que ocupen todo el contenedor */
     padding: 8px;
     border: 1px solid skyblue;
     border-radius: 5px;
     box-sizing: border-box;
     margin-top: 5px;
 }
-#placas, #nombre_tipo_vehiculo{
-    width:543px;
-    padding: 8px;
-    border: 1px solid skyblue;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-top: 5px;
+#nombre_tipo_vehiculo{
+    width: 471px;
 }
+#placas{
+    width: 471px;
+}
+
 input[type="submit"]:hover {
-background-color: #45a049;
+    background-color: #45a049;
 }
-input[type="text"]:focus {
-outline: none;
-border-color: #45a049;
-}
-input[type="date"]:focus {
-outline: none;
-border-color: #45a049;
-}
-select:focus{
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
     outline: none;
-border-color: #45a049; 
+    border-color: blue;
 }
+
 input[type="file"] {
     margin-top: 5px;
 }
-.row{
-background-color: black;
-width: 500px;
-}
-.form-group {
-    margin-bottom: 15px;
+
+.row {
+    background-color: black;
+    width: 500px;
+    margin: 0 auto; /* Centra el div .row horizontalmente */
 }
 
 
-.btn-default{
-    width: 100px;
-    padding: 10px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 12px;
-    font-size: 1em;
-    margin-left: -500px;
-    text-align: center;
-    margin-top: 20px; 
-}
-.btn-default{
-    text-decoration: none;
-    color: white;
-}
-.bt-default>a:hover{
-background-color: #45a049;
-}
+
 .btn-info{
     color: white;
 }
-    </style>
+</style>
   
 </html>
 
@@ -136,7 +119,8 @@ if (isset($_GET['id_conductor'])) {
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
- 
+    
+    <div class="caja">
         <div class="row">
             <h2 style="text-align:center">Modificar Conductores</h2>
         </div>
@@ -203,16 +187,16 @@ if (isset($_GET['id_conductor'])) {
                 </select>
             </div>
             
-            
+            <br><br>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <center><a href="estudiantes.php" class="btn-default">Regresar</a>
+                    <center><a href="estudiantes.php" class="btn btn-info">Regresar</a>
                     <button type="submit" class="btn btn-info">Guardar</button></center>
                     
                 </div>
             </div>
         </form>
-    
+    </div>
 </body>
 </html>
           
