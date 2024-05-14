@@ -25,17 +25,25 @@ try {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 </head>
+<header>
+    <?php include '../menu/menu.php'; ?>
+</header>
+<style>
+     .btn-info{
+        color: white;
+    }
+</style>
 <body>
-
-    <div class="conrainer col-5 mx-auto py-3">
+<br><br><br><br><br><br>
+    <div class="conrainer col-8 mx-auto py-3">
         <h2 class="text-center"><b>TIPO USUARIO</b></h2>
         <div class="row justify-content-end">
             <div class="col-auto">
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevoTipUsuModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Usuario</a>
+                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoTipUsuModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Usuario</a>
             </div>
         </div>
-        <table class="table table-sm mx-auto table-striped table-hover mt-4">
-            <thead class="table-dark">
+        <table class="table table-sm mx-auto table-hover mt-4">
+            <thead class="">
                 <tr>
                     <th >#</th>
                     <th>Tipo Usuario</th>

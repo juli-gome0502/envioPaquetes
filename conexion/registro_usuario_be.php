@@ -21,16 +21,10 @@ function validarNombre($nombre_us) {
     return preg_match($patron, $apellido_us);
   }
   
-  function validarDocumento($n_Documento_us, $tipo_documento) {
-    if ($tipo_documento == "CC") {
-      $patron = "/^\d{7,10}$/"; // Regular expression for CC documents
-    } else if ($tipo_documento == "CE") {
-      $patron = "/^\d{10}$/"; // Regular expression for CE documents
-    } else {
-      return false;
-    }
+  function validarDocumento($n_Documento_us) {
+    $patron = "/^\d{8}$|^\d{10}$/"; // Regular expression for 8 or 10 digits
     return preg_match($patron, $n_Documento_us);
-  }
+}
   
   function validarDireccion($direccion) {
     $patron = "/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\s,\.\-]+$/"; // Regular expression for addresses
@@ -67,11 +61,11 @@ function validarNombre($nombre_us) {
     return preg_match($patron, $usuario);
   }
   
-  function validarContraseña($contrasena) {
-    $patron = "/^(?=.*\.\*)(?=.*[A-Z])(?=.*\d)(?=.*[@#%\-_])\w{8,}$/"; // Regular expression for passwords
-    return preg_match($patron, $contrasena);
-  }
-  
+  function validarContrasena($contrasena) {
+    // La contraseña debe tener al menos 8 caracteres
+    return strlen($contrasena) >= 8;
+}
+
 
 // Validaciones
 $errores = [];
@@ -84,7 +78,7 @@ if (!validarApellido($apellido_us)) {
     $errores[] = "El apellido no es válido. Debe contener solo letras y espacios.";
 }
 
-if (!validarDocumento($n_Documento_us, $tipo_documento)) {
+if (!validarDocumento($n_Documento_us)) {
     $errores[] = "El número de documento no es válido para el tipo de documento seleccionado.";
 }
 
@@ -104,7 +98,7 @@ if (!validarUsuario($usuario)) {
     $errores[] = "El nombre de usuario no es válido. Debe contener solo letras, números y guiones bajos.";
 }
 
-if (!validarContraseña($contrasena)) {
+if (!validarContrasena($contrasena)) {
     $errores[] = "La contraseña no es válida. Debe tener al menos 8 caracteres, incluir una letra minúscula, una letra mayúscula, un número y un símbolo especial.";
 }
 

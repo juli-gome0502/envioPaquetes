@@ -25,6 +25,9 @@ try {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 </head>
+<header>
+    <?php include '../menu/menu.php'; ?>
+</header>
 <body>
 
     <div class="conrainer col-5 mx-auto py-3">
@@ -34,7 +37,7 @@ try {
                 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevoDestiModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destinatario</a>
             </div>
         </div>
-        <table class="table table-sm mx-auto table-striped table-hover mt-4">
+        <table class="table table-sm mx-auto  table-hover mt-4">
             <thead class="table-dark">
                 <tr>
                     <th >#</th>

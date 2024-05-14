@@ -23,19 +23,26 @@ try {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-
 </head>
+<header>
+    <?php include '../menu/menu.php'; ?>
+</header>
+<style>
+     .btn-info{
+        color: white;
+    }
+</style>
 <body>
-
-    <div class="conrainer col-5 mx-auto py-3">
+<br><br><br><br><br><br>
+    <div class="conrainer col-8 mx-auto py-3">
         <h2 class="text-center"><b>TIPO PESO</b></h2>
         <div class="row justify-content-end">
             <div class="col-auto">
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevoPesoModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Peso</a>
+                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoPesoModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Peso</a>
             </div>
         </div>
-        <table class="table table-sm mx-auto table-striped table-hover mt-4">
-            <thead class="table-dark">
+        <table class="table table-sm mx-auto t table-hover mt-4">
+            <thead class="">
                 <tr>
                     <th >#</th>
                     <th>Tipo Peso</th>

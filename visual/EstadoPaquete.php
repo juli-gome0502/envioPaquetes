@@ -25,6 +25,9 @@ try {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 </head>
+<header>
+    <?php include '../menu/menu.php'; ?>
+</header>
 <body>
 
     <div class="conrainer col-5 mx-auto py-3">

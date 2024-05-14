@@ -8,6 +8,7 @@ try {
   echo "Error: " . $e->getMessage();
 }
 
+
 // Now you can process the results in $destino (assuming it's a PDOStatement object)
 // ...
 ?>
@@ -25,17 +26,26 @@ try {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 </head>
+<style>
+    .btn-info{
+        color: white;
+    }
+</style>
+<header>
+    <?php include '../menu/menu.php'; ?>
+</header>
 <body>
 
-    <div class="conrainer col-5 mx-auto py-3">
-        <h2 class="text-center">DESTINO</h2>
+    <div class="conrainer col-8 mx-auto py-3">
+        <br><br><br><br>
+        <h2 class="text-center"><b>DESTINO</b></h2>
         <div class="row justify-content-end">
             <div class="col-auto">
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevoModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destino</a>
+                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destino</a>
             </div>
         </div>
-        <table class="table table-sm mx-auto table-striped table-hover mt-4">
-            <thead class="table-dark">
+        <table class="table  mt-4">
+            <thead class="">
                 <tr>
                     <th >#</th>
                     <th>Nombre Destino</th>
@@ -72,14 +82,8 @@ try {
                    <?php endwhile; ?>
             </tbody>
         </table>
-        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         <?php include "../modelo/NuevoModalDest.php"; ?>
-     
-
-
-
-
 
     </div>
 
