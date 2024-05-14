@@ -13,7 +13,11 @@ body{
     background-position: center;
     background-attachment: fixed;
 }
-
+/* Estilo para el enlace "Olvide mi contraseña" */
+.oveclav a{
+    color: #00A2E8; /* Color similar al botón "Entrar" */
+    text-decoration: none; /* Sin subrayado */
+}
 
 main{
     width: 100%;

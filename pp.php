@@ -39,7 +39,15 @@
                     <button id="btn__registrarse">Regístrarse</button>
                 </div>
             </div>
-
+            <style>
+                .olveclav{
+                    color: #00A2E8; /* Color similar al botón "Entrar" */
+                    text-decoration: none;
+                    float: right; /* Alineado a la derecha */
+                    margin-right: 20px;
+                     
+                }
+            </style>
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
@@ -47,7 +55,11 @@
                     <h2>Iniciar Sesión</h2>
                     <input type="text" placeholder="Usuario" name="usuario" id="usuario" require>
                     <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" require>
+                    <br><br>
+                    <a  class="olveclav" href="./contrasena/restablecer.php">Olvide mi contraseña</a>
+                    <br>
                     <button name="entrar">Entrar</button>
+                    
                 </form>
 
                 <!--Register-->
@@ -69,7 +81,7 @@
                     <input type="text" placeholder="Usuario" name="usuario"  required>
                     <input type="password" placeholder="Contraseña" name="contrasena"  required>
                     <button>Regístrarse</button>
-                    
+                   
                 </form>
             </div>
         </div>

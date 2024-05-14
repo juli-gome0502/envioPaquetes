@@ -42,10 +42,25 @@ function validarNombre($nombre_us) {
     return preg_match($patron, $telefono);
   }
   
-  function validarCorreo($correo_electronico_us) {
-    $patron = "/^[a-zA-Z0-9\._\-+\]+@[a-zA-Z0-9\-.]+\.[a-zA-Z0-9\-]+$/"; // Regular expression for emails
-    return preg_match($patron, $correo_electronico_us);
+  function validarCorreoCompleto($correo_electronico_us) {
+    // Regular expression for basic email structure (improved for RFC compliance)
+    $emailPattern = "/^[^\s@]+@[^\s@]+\.[^\s@]+$/";
+  
+    // Validate basic structure first
+    if (!preg_match($emailPattern, $correo_electronico_us)) {
+      return false;  // Not a valid email structure
+    }
+  
+    // Extract domain name for further validation
+    $domain = strtolower(substr(strstr($correo_electronico_us, '@'), 1));  // Extract domain after "@"
+  
+    // Array of allowed domain providers (case-insensitive)
+    $allowedDomains = array('gmail.com', 'hotmail.com', 'outlook.com');
+  
+    // Check if domain is among allowed providers
+    return in_array($domain, $allowedDomains, true);
   }
+  
   
   function validarUsuario($usuario) {
     $patron = "/^[a-zA-Z0-9_]+$/"; // Regular expression for usernames
@@ -81,7 +96,7 @@ if (!validarTelefono($telefono_us)) {
     $errores[] = "El número de teléfono no es válido. Debe contener entre 7 y 15 dígitos.";
 }
 
-if (!validarCorreo($correo_electronico_us)) {
+if (!validarCorreoCompleto($correo_electronico_us)) {
     $errores[] = "El correo electrónico no es válido.";
 }
 
