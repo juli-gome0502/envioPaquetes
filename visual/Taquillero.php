@@ -1,4 +1,9 @@
 <?php
+session_start();
+if($_SESSION['us_tipo']==1){
+
+?>
+<?php
 
 
 $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
@@ -235,3 +240,9 @@ if (!$taquillero) {
    
 </body>
 </html>
+<?php
+}
+else{
+    header('Location: ../visual/login.php');
+}
+?>

@@ -13,6 +13,7 @@ try {
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,17 +27,24 @@ try {
 
 </head>
 <header>
-    <?php include '../menu/menu.php'; ?>
+    <?php include '../menu/menuTaq.php'; ?>
 </header>
 <body>
 
-    <div class="conrainer col-5 mx-auto py-3">
-        <h2 class="text-center">DESTINATARIO</h2>
-        <div class="row justify-content-end">
+
+    <div class="conrainer col-10 mx-auto py-3">
+
+        
+        <div class="conrainer col-10 mx-auto py-3">
+        <br> 
+        <center><h2 class="text-center"><b>INFORMACIÓN DESTINATARIO</b></h2></center>
+    
+            <div class="row justify-content-end">
             <div class="col-auto">
                 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevoDestiModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destinatario</a>
             </div>
         </div>
+        
         <table class="table table-sm mx-auto  table-hover mt-4">
             <thead class="table-dark">
                 <tr>

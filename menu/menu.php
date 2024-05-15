@@ -10,7 +10,7 @@
     <div id="sidemenu" class="menu-collapsed">
     <!-- HEADER -->
         <div id="header">
-            <div id="title"><span>Administrador</span> </div>
+            <div id="title"><span><a href="../controlador/logout.php">Cerrar sesion</a></span> </div>
             <div id="menu-btn">
                 <div class="btn-iconos"></div>
                 <div class="btn-iconos"></div>
@@ -20,7 +20,7 @@
         <!-- PROFILE -->
         <div id="profile">
             <div id="photo"><img src="../img/user-solid.png" alt="" ></div>
-            <div id="name"><span>Gerente</span></div>
+            <div id="name"><span>Administrador</span></div>
         </div>
         <div id="menu-items">
             <div class="item">
@@ -39,7 +39,7 @@
             <div class="item">
                 <a href="../visual/TabVehiculo.php">
                     <div class="icon"><img src="../img/bus.png" alt="" width="100px"></div>
-                    <div class="title"><span>Vehiculo</span></div>
+                    <div class="title"><span>Vehículo</span></div>
                 </a>
             </div>
             <div class="item-separator">
