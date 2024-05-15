@@ -6,7 +6,7 @@
 /* Estilos para el formulario */
 body {
     font-family: Arial, sans-serif;
-    padding-top: 100px;
+    padding-top: 50px;
     padding-left: 550px;
     
 }
@@ -14,6 +14,7 @@ body {
 
 h2 {
     text-align: center;
+    margin-left:-50px;
 }
 
 form {
@@ -33,12 +34,13 @@ textarea {
     border-radius: 5px;
     box-sizing: border-box;
     margin-top: 5px;
+    
 }
 #nombre_tipo_vehiculo{
-    width: 471px;
+    width: 390px;
 }
 #placas{
-    width: 471px;
+    width: 390px;
 }
 
 input[type="submit"]:hover {
@@ -57,15 +59,16 @@ input[type="file"] {
 }
 
 .row {
-    background-color: black;
+
     width: 500px;
     margin: 0 auto; /* Centra el div .row horizontalmente */
 }
 
 
 
-.btn-info{
+.btns{
     color: white;
+    margin-left:-170px;
 }
 </style>
   
@@ -135,19 +138,21 @@ if (isset($_GET['id_conductor'])) {
                     <input type="text" class="form-control" id="nombre_con" name="nombre_con" placeholder="Nombres" value="<?php echo $row['nombre_con']; ?>" required>
                 </div>
             </div>
-            
+            <br>
             <div class="form-group">
                 <label for="apellido_conduc" class="col-sm-2 control-label">Apellidos</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="apellido_conduc" name="apellido_conduc" placeholder="Apellidos" value="<?php echo $row['apellido_conduc']; ?>" required>
                 </div>
             </div>
+            <br>
             <div class="form-group">
                 <label for="n_documento_con" class="col-sm-2 control-label">Documento</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="n_documento_con" name="n_documento_con" placeholder="n_documento_con" value="<?php echo $row['n_documento_con']; ?>" required>
                 </div>
             </div>
+            <br>
             <div class="form-group">
                 <label for="nombre_tipo_vehiculo" class="col-sm-2 control-label">Grado</label>
                 <br>
@@ -166,7 +171,7 @@ if (isset($_GET['id_conductor'])) {
               ?>
                 </select>
             </div>
-            
+            <br>
             
             <div class="form-group">
                 <label for="placas" class="col-sm-2 control-label">Barrio</label>
@@ -189,7 +194,7 @@ if (isset($_GET['id_conductor'])) {
             
             <br><br>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="btns col-sm-offset-2 col-sm-10">
                     <center><a href="estudiantes.php" class="btn btn-info">Regresar</a>
                     <button type="submit" class="btn btn-info">Guardar</button></center>
                     

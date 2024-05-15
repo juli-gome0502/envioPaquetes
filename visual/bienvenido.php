@@ -37,9 +37,6 @@
         <li class="navli">
           <a class="nava"  href="../visual/notoficacion.php">Notificaciones </a>
         </li>
-        <li class="navli">
-          <a class="nava"  href="../visual/Perfil_usu.php">Perfil </a>
-        </li>
         
         
     </ul>

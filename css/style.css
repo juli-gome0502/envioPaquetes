@@ -154,6 +154,8 @@ a:hover{
 .btn:hover{
     background-position: right;
 }
+
+
 /*responsive para tablets y celulares*/
 /*tablets*/
 @media screen and (max-width: 1050px){

@@ -20,6 +20,35 @@ session_destroy();
 
 ?>
 <body>
+    <style>
+        .btn-info{
+            display: block;
+            width: 200px;
+            height: 50px;
+            margin-left:-5px;
+            padding-top:13px;
+            border-radius: 25px;
+            outline: none;
+            border: none;
+            background-image: linear-gradient(to right, #680197, #00ffbf,#c046f8);
+            background-size: 200%;
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: .5s;
+        }
+        .btn-info:hover{
+            background-position: right;
+        }
+    </style>
+    <div class="row justify-content-end">
+        <div class="col-auto">
+            <a href="../RegistrarAdmin/registrarAdm.php" class="btn btn-info" data-bs-toggle="modal"><i class="fa-solid fa-circle-plus"></i> <b>Nuevo Taquillero</b></a>
+        </div>
+    </div>
    <img class="wave" src="../img/wave.png" alt="">
     <div class="contenedor">
         <div class="img">
@@ -47,14 +76,17 @@ session_destroy();
                         <input type="password" name="pass" class="input" require>
                     </div>
                 </div>
-                <a href="">Olvide mi contraseña</a>
+               
                 <input type="submit" class="btn" value="Inicias Sesion">
             </form>
+            
         </div>
     </div>
     
     <script src="../js/login.js"></script>
+    
 </body>
+
 </html>
 <?php
 

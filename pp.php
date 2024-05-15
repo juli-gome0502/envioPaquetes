@@ -56,8 +56,7 @@
                     <input type="text" placeholder="Usuario" name="usuario" id="usuario" require>
                     <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" require>
                     <br><br>
-                    <a  class="olveclav" href="./contrasena/restablecer.php">Olvide mi contraseña</a>
-                    <br>
+                    
                     <button name="entrar">Entrar</button>
                     
                 </form>
