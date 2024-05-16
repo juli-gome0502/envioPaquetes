@@ -24,6 +24,13 @@ if($_SESSION['us_tipo']==2){
     <?php include '../menu/menuTaq.php'; ?>
 </header>
 <body>
+    <div class="container_envio">
+    <div class="row justify-content-end">
+            <div class="col-auto">
+                <a href="../visual/envios.php" class="btn btn-info" ><i class="fa-solid fa-circle-plus"></i> <b>Crear Guía</b></a>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
