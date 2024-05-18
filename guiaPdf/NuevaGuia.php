@@ -1,3 +1,31 @@
+<?php
+$conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
+if ($conexion->connect_error) {
+    die("Connection failed: " . $conexion->connect_error);
+  }
+$sqlGuia= "SELECT e.id_envio, e.id_usuario, e.id_destinatario, e.id_vehiculo, e.id_taquillero,
+       e.id_destino, e.fecha_envio, e.fecha_estimada, e.direccion, e.id_tipo_paquete,
+       e.id_tipo_peso, e.peso, e.dimensiones, e.volumen, u.nombre_us, u.apellido_us,
+       d.nombre_destinatario AS nombre_destinatario, d.apellido_destinatario, d.telefono_des, v.placas, v.n__bus, t.nombre_taq, t.apellido_taq,
+       p.nombbre_tipo_peso, c.bombre_tipo_paquete, b.nombre_destino
+FROM envio AS e
+INNER JOIN id_usuario AS u ON e.ID_USUARIO = u.ID_USUARIO
+INNER JOIN id_destinatario AS d ON e.ID_DESTINATARIO = d.ID_DESTINATARIO
+INNER JOIN id_vehiculo AS v ON e.ID_VEHICULO = v.ID_VEHICULO
+INNER JOIN id_taquillero AS t ON e.ID_TAQUILLERO = e.ID_TAQUILLERO
+INNER JOIN id_tipo_peso AS p ON e.ID_TIPO_PESO = e.ID_TIPO_PESO
+INNER JOIN id_tipo_paquete AS c ON e.ID_TIPO_PAQUETE = e.ID_TIPO_PAQUETE
+INNER JOIN id_destino AS b ON e.ID_DESTINO = e.ID_DESTINO";
+
+$resultado = $conexion->query($sqlGuia);
+
+if (!$resultado) {
+  echo "Error: " . $conexion->error;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +87,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label for="" class="form-label">Remitente</label>
-                    <input type="text" placeholder="Buscar Remitente por Documento" class="form-control">
+                    <select class="form-control" required name="id_usuario" id="">
+                
+                    </select>
+
                     <br>
-                    <input type="text" placeholder="Nombre"class="form-control">
+                    <div class="form-group" id="select2lista">
+
+                    </div>
                     <br>
                     <input type="text" placeholder="Apellido" class="form-control">
                     <br>
@@ -70,50 +103,51 @@
                     <input type="text" placeholder="Tipo_documento" class="form-control">
 
                 </div>
-            <div class="col-sm-6 des">
-                <label for="" class="form-label">Destinatario</label>
-                <input type="text" placeholder="Buscar por N° Teléfono" class="form-control">
-                <br>
-                <input type="text" placeholder="Nombre" class="form-control">
-                <br>
-                <input type="text" placeholder="Apellido" class="form-control">
-                <br>
-                <input type="text" placeholder="Teléfono" class="form-control">
+                <div class="col-sm-6 des">
+                    <label for="" class="form-label">Destinatario</label>
+                    <input type="text" placeholder="Buscar por N° Teléfono" class="form-control">
+                    <br>
+                    <input type="text" placeholder="Nombre" class="form-control">
+                    <br>
+                    <input type="text" placeholder="Apellido" class="form-control">
+                    <br>
+                    <input type="text" placeholder="Teléfono" class="form-control">
 
-            </div>
+                </div>
             </div>
             
             <div class="row">
-            <div class="con2">
-                <div class="col-sm-6">
-                <br>
-                <select class="form-select"  name="" id="id_destino">
-                    <option value="">---Destino---</option>
-                </select>
-                </div>
-                <br>
-                <div class="col-sm-6">
-                <input type="text" placeholder="Direccion" class="form-control">
-                </div>
-                
-                <div class="col-sm-6">
-                <br>
-                <select class="form-select"   name="" id="id_tipo_paquete">
-                    <option value="">---Tipo id_tipo_paquete---</option>
-                </select>
-                </div>
-                <div class="col-sm-6">
-                <br>
-                <select class="form-select"  name="" id="id_tipo_peso">
-                    <option value="">----Tipo Peso</option>
-                </select>
-                </div><br>
-                <div class="col-sm-6">
-                <input type="text" placeholder="Ingrese Peso" class="form-control">
-                </div>
-                <br>
+                <div class="con2">
+                    <div class="col-sm-6">
+                    <br>
+                    <select class="form-select"  name="" id="id_destino">
+                        <option value="">---Destino---</option>
+                    
+                    </select>
+                    </div>
+                    <br>
+                    <div class="col-sm-6">
+                    <input type="text" placeholder="Direccion" class="form-control">
+                    </div>
+                    
+                    <div class="col-sm-6">
+                    <br>
+                    <select class="form-select"   name="" id="id_tipo_paquete">
+                        <option value="">---Tipo id_tipo_paquete---</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-6">
+                    <br>
+                    <select class="form-select"  name="" id="id_tipo_peso">
+                        <option value="">----Tipo Peso</option>
+                    </select>
+                    </div><br>
+                    <div class="col-sm-6">
+                    <input type="text" placeholder="Ingrese Peso" class="form-control">
+                    </div>
+                    <br>
             
-            </div>
+                </div>
             <div class="row">
             <div class="con3">
                 <div class="col-sm-6">
@@ -153,3 +187,26 @@
     
 </body>
 </html>
+
+<script>
+    $(document).ready(function() {
+        $('#id_usuario').val(0);
+        recargarLista();
+
+        $('#id_usuario').change(function() {
+            recargarLista();
+        });
+    })
+</script>
+<script>
+    function recargarLista() {
+        $.ajax({
+            type: "POST",
+            url: "obtener.php",
+            data: "nombre_us=" + $('#id_usuario').val(),
+            success: function(r) {
+                $('#select2lista').html(r);
+            }
+        });
+    }
+</script>
