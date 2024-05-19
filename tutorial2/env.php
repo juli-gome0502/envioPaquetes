@@ -93,7 +93,6 @@ if (!$envio) {
   <link rel="stylesheet" href="../css/datatables.min.css">
   <script> src="../js/datatables.min.js"</script>
   <script src="../js/jquery-3.7.1.min.js"></script>
-
 </head>
 
 <body class="body1">
@@ -257,11 +256,11 @@ if (isset($_POST['mostrar'])) {
                     $offset = ($current_page - 1) * $records_per_page;
                     $sqlEnvio .= " LIMIT $offset, $records_per_page";
                     $envio = $conexion->query($sqlEnvio);
-                    $id_envio_array = array();
+
 
                 // Check if there are any results   
                     foreach ($EnvioResult as $fila){
-                        $id_envio_array[] = $fila['id_envio'];
+
                 ?>
                 <tr>
                     <td><?php echo $fila['id_envio']; ?></td>
@@ -277,11 +276,9 @@ if (isset($_POST['mostrar'])) {
                     <td><?php echo $fila['pago']; ?></td>
                     <td>
                         <a type="button" ><i class="fa-solid fa-file-pdf" style="color: #cb2020;"></i></a> 
-                        <a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank"><i class="fas fa-print"> Imprimir</i></a><br />
                      </td>
-
+                     
                 </tr>
-
                 <?php
             }
                 ?>
@@ -289,17 +286,6 @@ if (isset($_POST['mostrar'])) {
 
             </tbody>
         </table>
-        <a class="link" href="./guiar.php?idCat=<?php echo $documentoseleccionada; ?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"> Imprimir</i></a><br />
-
-<script>
-function printDocument(event, url) {
-    event.preventDefault();
-    var printWindow = window.open(url, '_blank');
-    printWindow.onload = function() {
-        printWindow.print();
-    };
-}
-</script>
       
         <style>
             .navPag{

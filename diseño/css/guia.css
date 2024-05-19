@@ -1,0 +1,170 @@
+.ppp{
+    margin-left: -500px;
+    padding-top: 80px;
+   
+}
+.slogan{
+    font-size: 20px;
+    margin-left: 400px;
+}
+.n1{
+    margin-top: -80px;
+}
+.logo{
+    background-color: #E9ECEF;
+    width: 400px;
+    border: 2px solid rgb(136, 136, 136);
+}
+.fechas input{
+    width: 200px;
+    margin-left: 50px;
+    
+  
+    
+}
+.fechas{
+    background-color: #E9ECEF;
+    width:800px;
+    margin-left: 400px;
+    margin-top: -213px;
+    height: 208px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.remitente{
+    background-color: rgb(53, 141, 255);
+    width: 1200px;
+    height: 50px;
+    font-size:30px ;
+    padding-left: 20px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.infoRem input{
+    /* background-color: rgb(236, 236, 236); */
+    width: 350px;
+}
+.infoRem{
+    background-color: #E9ECEF;
+    height: 100px;
+    padding-top: 30px;
+    width: 1200px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.in1{
+    margin-left: 30px;
+}
+.in2{
+    margin-left: 420px;
+    margin-top: -40px;
+}
+.in3{
+    margin-left: 800px;
+    margin-top: -40px;
+}
+.enviodat{
+    background-color: rgb(53, 141, 255);
+    width: 1200px;
+    height: 50px;
+    font-size:30px ;
+    padding-left: 20px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.datopaq input{
+    width: 300px;
+    margin-left: 100px;
+    
+
+}
+
+.datopaq{
+    background-color: #E9ECEF;
+    width: 420px;
+    border: 2px solid rgb(117, 117, 117);
+    height: 350px;
+}
+.pago{
+    background-color: #E9ECEF;
+    width: 780px;
+    height: 340px;
+    margin-left: 420px;
+    margin-top: -350px;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(117, 117, 117);
+}
+.pago label{
+    font-size: 20px;
+    margin-left: 180px;
+    margin-top: -150px;
+}
+.pago input{
+    margin-left: -380px;
+    width: 400px;
+    
+}
+.contrato{
+    width: 730px;
+    background-color: #E9ECEF;
+    height: 200px;
+    padding-top: 20px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.contrato p{
+    font-size: 20px;
+}
+.cont{
+    background-color: rgb(53, 141, 255);
+    width: 1200px;
+    height: 50px;
+    font-size:30px ;
+    padding-left: 20px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.destino{
+    background-color: rgb(53, 141, 255);
+    width: 470px;
+    height: 50px;
+    font-size:30px ;
+    padding-left: 20px;
+    margin-left: 730px;
+    margin-top: -200px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.dest input{
+    width: 400px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.dest{
+    background-color: #E9ECEF;
+    width: 470px;
+    height: 150px;
+    margin-left: 730px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.firma{
+    background-color: rgb(248, 248, 248);
+    width: 1200px;
+    height: 50px;
+    font-size:30px ;
+    padding-left: 20px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.placas{
+    background-color: rgb(53, 141, 255);
+    width: 1200px;
+    height: 50px;
+    font-size:30px ;
+    padding-left: 20px;
+    border: 2px solid rgb(117, 117, 117);
+}
+.plac input{
+    width: 300px;
+    margin-left: 20px;
+    
+}
+.plac{
+    background-color: #E9ECEF;
+    width: 1200px;
+    height: 100px;
+    border: 2px solid rgb(117, 117, 117);
+}
