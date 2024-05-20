@@ -1,4 +1,5 @@
 <?php
+require_once('/fpdf186/fpdf.php');
 
 class PDF extends FPDF /* heredamos la clase FPDF */
 {

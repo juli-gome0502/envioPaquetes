@@ -20,8 +20,18 @@
     </style>
 <?php
 $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
+session_start();
+ if ($_SESSION["id_usuario"]==""){
+    echo '<meta http-equiv="refresh" content="0,url=pp.php">';
+ }
 
+ $sqlUso = "SELECT id_usuario FROM usuario WHERE id_usuario = {$_SESSION["id_usuario"]}";
+ $query = mysqli_query($conexion, $sqlUso);
+
+ $fetch = mysqli_fetch_assoc($query);
+ $id_usuario = $fetch['id_usuario'];
 $ID = $_GET['idCat'];
+
 
 $sqldocumento = "SELECT
 e.id_envio,
@@ -39,14 +49,11 @@ ds.nombre_destino,
 e.fecha_envio,
 e.fecha_estimada,
 tp.id_tipo_paquete,
-tp.nombre_tipo_paquete,
 ps.id_tipo_peso,
 v.id_vehiculo,
-ps.nombre_tipo_peso,
 e.peso,
 e.dimensiones,
 e.volumen,
-v.placas,
 e.pago,
 e.id_estado,
 est.nombre_estado
@@ -58,7 +65,8 @@ INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
 INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
 INNER JOIN estado est ON e.id_estado = est.id_estado 
-
+WHERE e.id_envio = $ID"; 
+//echo $sql;
 
 $EnvioResult=mysqli_query($conexion, $sqldocumento);
 
@@ -66,17 +74,18 @@ foreach ($EnvioResult as $fila) {
 
     ?>
 <tr>
-        <td><?php $fila['id_envio']; ?></td>
+        <td><?php  $fila['id_envio']; ?></td>
         <td><?php  $fila['nombre_us']; ?></td>
-        <td><?php  $fila['apellido_us']; ?></td>
+        <td><?php $fila['apellido_us']; ?></td>
         <td><?php  $fila['n_documento_us']; ?></td>
         <td><?php  $fila['nombre_destinatario']; ?></td>
         <td><?php  $fila['apellido_destinatario']; ?></td>
-        <td><?php $fila['telefono_des']; ?></td>
-        <td><?php  $fila['nombre_destino']; ?></td>
-        <td><?php  $fila['fecha_envio']; ?></td>
-        <td><?php $fila['fecha_estimada']; ?></td>
+        <td><?php  $fila['telefono_des']; ?></td>
+        <td><?php $fila['nombre_destino']; ?></td>
+        <td><?php $fila['fecha_envio']; ?></td>
+        <td><?php  $fila['fecha_estimada']; ?></td>
         <td><?php $fila['pago']; ?></td>
+        <td><?php $fila['nombre_estado']; ?></td>
 
 
 <?php

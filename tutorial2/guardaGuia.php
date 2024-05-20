@@ -33,7 +33,8 @@ $sql = "INSERT INTO envio (
     pago, 
     fecha_envio, 
     fecha_estimada, 
-    id_vehiculo
+    id_vehiculo,
+    id_estado
 )
 VALUES (
     NULL,
@@ -49,7 +50,8 @@ VALUES (
     '$pago',
     '$fecha_ingreso',
     '$fecha_estimada',
-    '$id_vehiculo'
+    '$id_vehiculo',
+    '2'
 )";
 
 if ($conexion->query($sql)) {

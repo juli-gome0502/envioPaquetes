@@ -22,14 +22,17 @@ v.id_vehiculo,
 e.peso,
 e.dimensiones,
 e.volumen,
-e.pago
+e.pago,
+e.id_estado,
+est.nombre_estado
 FROM envio e
 JOIN usuario u ON e.id_usuario = u.id_usuario
 JOIN destinatario d ON e.id_destinatario = d.id_destinatario
 INNER JOIN destino ds ON e.id_destino = ds.id_destino
 INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
-INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo";
+INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
+INNER JOIN estado est ON e.id_estado = est.id_estado ";
 
 $EnvioResult = mysqli_query($conexion, $sql);
 
@@ -59,14 +62,17 @@ v.id_vehiculo,
 e.peso,
 e.dimensiones,
 e.volumen,
-e.pago
+e.pago,
+e.id_estado,
+est.nombre_estado
 FROM envio e
 JOIN usuario u ON e.id_usuario = u.id_usuario
 JOIN destinatario d ON e.id_destinatario = d.id_destinatario
 INNER JOIN destino ds ON e.id_destino = ds.id_destino
 INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
-INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo";
+INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
+INNER JOIN estado est ON e.id_estado = est.id_estado ";
 
 
 
@@ -175,7 +181,9 @@ if (isset($_POST['mostrar'])) {
         e.peso,
         e.dimensiones,
         e.volumen,
-        e.pago
+        e.pago,
+        e.id_estado,
+        est.nombre_estado
     FROM envio e
     JOIN usuario u ON e.id_usuario = u.id_usuario
     JOIN destinatario d ON e.id_destinatario = d.id_destinatario
@@ -183,6 +191,8 @@ if (isset($_POST['mostrar'])) {
     INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
     INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
     INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
+    INNER JOIN estado est ON e.id_estado = est.id_estado 
+
     WHERE u.id_usuario = $documentoseleccionada";
 
     $EnvioResult = mysqli_query($conexion, $sqldocumento);
@@ -215,6 +225,7 @@ if (isset($_POST['mostrar'])) {
                     <th>fecha inicio</th>
                     <th>fecha fin</th>
                     <th>pago</th>
+                    <th>Estado</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -274,11 +285,16 @@ if (isset($_POST['mostrar'])) {
                     <td><?php echo $fila['nombre_destino']; ?></td>
                     <td><?php echo $fila['fecha_envio']; ?></td>
                     <td><?php echo $fila['fecha_estimada']; ?></td>
+                    
                     <td><?php echo $fila['pago']; ?></td>
+                    <td><?php echo $fila['nombre_estado']; ?></td>
                     <td>
-                        <a type="button" ><i class="fa-solid fa-file-pdf" style="color: #cb2020;"></i></a> 
-                        <a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank"><i class="fas fa-print"> Imprimir</i></a><br />
+                    <button type="button" class="btn btn-outline-info"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"></i></a><br />
+                    </button>               
+                    <a  class="btn btn-sm btn-warning" href="./EditarEnvioPa.php?id_envio=<?php echo $fila['id_envio'];?>"><i class="fa-solid fa-pen-to-square"></i></a>
+ 
                      </td>
+                     
 
                 </tr>
 
@@ -288,8 +304,9 @@ if (isset($_POST['mostrar'])) {
                 
 
             </tbody>
+            
         </table>
-        <a class="link" href="./guiar.php?idCat=<?php echo $documentoseleccionada; ?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"> Imprimir</i></a><br />
+        
 
 <script>
 function printDocument(event, url) {
@@ -298,7 +315,10 @@ function printDocument(event, url) {
     printWindow.onload = function() {
         printWindow.print();
     };
+
 }
+
+
 </script>
       
         <style>
@@ -325,7 +345,7 @@ function printDocument(event, url) {
       
     </div>
 
-
+  
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/4aZT6UO2/O+0495CT4tG9kXH7Zk//mkkn/1M0" crossorigin="anonymous"></script>

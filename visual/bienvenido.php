@@ -32,7 +32,7 @@
           <a class="nava" href="../visual/bienvenido.php">Inicio</a>
         </li>
         <li class="navli">
-          <a  class="nava" href="../visual/envios.php">Envios Realizados</a>
+          <a  class="nava" href="../visual/reporteUsu/pdfUsuario.php">Envios Realizados</a>
         </li>
         <li class="navli">
           <a class="nava"  href="../visual/notoficacion.php">Notificaciones </a>
