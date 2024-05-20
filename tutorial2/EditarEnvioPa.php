@@ -75,33 +75,70 @@ input[type="file"] {
 </html>
 
 <?php
+
 $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
+
+$ID = $_GET['id_envio'];
+
+$sqldocumento = "SELECT
+e.id_envio,
+e.id_usuario,
+u.nombre_us,
+u.apellido_us,
+u.n_documento_us,
+e.id_destinatario,
+d.nombre_destinatario,
+d.apellido_destinatario,
+d.telefono_des,
+e.direccion,
+e.id_destino,
+ds.nombre_destino,
+e.fecha_envio,
+e.fecha_estimada,
+tp.id_tipo_paquete,
+ps.id_tipo_peso,
+v.id_vehiculo,
+e.peso,
+e.dimensiones,
+e.volumen,
+e.pago,
+e.id_estado,
+est.nombre_estado
+FROM envio e
+JOIN usuario u ON e.id_usuario = u.id_usuario
+JOIN destinatario d ON e.id_destinatario = d.id_destinatario
+INNER JOIN destino ds ON e.id_destino = ds.id_destino
+INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
+INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
+INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
+INNER JOIN estado est ON e.id_estado = est.id_estado 
+WHERE e.id_envio = '$ID'";
+
+
+$EnvioResult=mysqli_query($conexion, $sqldocumento);
+
+foreach ($EnvioResult as $fila) {
+
+    ?>
+<tr>
+        <td><?php $fila['id_envio']; ?></td>
+        <td><?php  $fila['nombre_us']; ?></td>
+        <td><?php  $fila['apellido_us']; ?></td>
+        <td><?php  $fila['n_documento_us']; ?></td>
+        <td><?php  $fila['nombre_destinatario']; ?></td>
+        <td><?php  $fila['apellido_destinatario']; ?></td>
+        <td><?php $fila['telefono_des']; ?></td>
+        <td><?php  $fila['nombre_destino']; ?></td>
+        <td><?php  $fila['fecha_envio']; ?></td>
+        <td><?php $fila['fecha_estimada']; ?></td>
+        <td><?php $fila['pago']; ?></td>
+
+<?php
+
 if ($conexion->connect_error) {
     die("Connection failed: " . $conexion->connect_error);
-}
+  }
 
-function get_data($mysqli, $sql, $params, ...$values) {
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param($params, ...$values);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        return $result->fetch_assoc();
-    } else {
-        return null;
-    }
-}
-
-if (isset($_GET['id_envio'])) {
-    $id_envio = $_GET['id_envio'];
-
-    $row = get_data($conexion, "SELECT id_envio, id_estado FROM envio WHERE id_envio = ?", 'i', $id_envio);
-    $nombre_estado = get_data($conexion, "SELECT nombre_estado FROM estado WHERE id_estado = ?", 'i', $row['id_estado']);
-} else {
-    echo "ID de envío no válido";
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -123,20 +160,41 @@ if (isset($_GET['id_envio'])) {
     </div>
 
     <form class="form-horizontal" method="POST" action="./getUserDetails.php" autocomplete="off">
-        <input type="hidden" name="id_envio" value="<?php echo $row['id_envio']; ?>">
+      <input type="hidden" name="id_envio" value="<?php echo $fila['id_envio']; ?>">
+      <label for="">N° Guia de envío</label>
+      <input type="text" class="form-control n1" disabled value="<?php echo $fila['id_envio']; ?>">
+      <br>
+      <label for="">Fecha Creada</label>
+      <input type="text" class="form-control n2" disabled value="<?php echo $fila['fecha_envio']; ?>">
+      <br>
+      <label for="">Fecha Estimada</label>
+      <input type="text" class="form-control n3" disabled value="<?php echo $fila['fecha_estimada']; ?>"><br>
+      <label for="">Nombre</label>
+      <input type="text" class="form-control in1" disabled value="<?php echo $fila['nombre_us']; ?>">
 
-        <div class="form-group">
-            <label for="nombre_estado" class="col-sm-2 control-label">Estado</label>
-            <select name="nombre_estado" id="nombre_estado" class="form-control">
-                <?php
-                $sql = $conexion->query("SELECT id_estado, nombre_estado FROM estado");
-                while ($resultado = $sql->fetch_assoc()) {
-                    echo "<option value='" . $resultado['id_estado'] . "'>" . $resultado['nombre_estado'] . "</option>";
-                }
-                ?>
-            </select>
+      <div class="form-group">
+        <label for="apellido_us" class="col-sm-2 control-label">Apellido</label>
+        <input type="text" name="apellido_us" id="apellido_us" class="form-control" value="<?php echo $fila['apellido_us'];?>" required>
+      </div>
+      <div class="form-group">
+        <label for="n_documento_us" class="col-sm-2 control-label">Número de Documento</label>
+        <input type="text" name="n_documento_us" id="n_documento_us" class="form-control" value="<?php echo $fila['n_documento_us']; ?>" required>
+      </div>
+      
+
+      <div class="form-group">
+        <label for="nombre_estado" class="col-sm-2 control-label">Estado</label>
+        <select name="nombre_estado" id="nombre_estado" class="form-control">
+          <option value="0">>-------Seleecione el estado--------<</option>
+            <?php
+            $sql = $conexion->query("SELECT id_estado, nombre_estado FROM estado");
+            while ($resultado = $sql->fetch_assoc()) {
+                echo "<option value='" . $resultado['id_estado'] . "'>" . $resultado['nombre_estado'] . "</option>";
+            }
+            ?>
+        </select>
         </div>
-
+            
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <center>
@@ -146,6 +204,11 @@ if (isset($_GET['id_envio'])) {
             </div>
         </div>
     </form>
+          
 </div>
+<?php
+}
+?>
 </body>
 </html>
+              

@@ -47,7 +47,9 @@ v.id_vehiculo,
 e.peso,
 e.dimensiones,
 e.volumen,
-e.pago
+e.pago,
+e.id_estado,
+est.nombre_estado
 FROM envio e
 JOIN usuario u ON e.id_usuario = u.id_usuario
 JOIN destinatario d ON e.id_destinatario = d.id_destinatario
@@ -55,7 +57,8 @@ INNER JOIN destino ds ON e.id_destino = ds.id_destino
 INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
 INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
-WHERE e.id_envio = $ID"; 
+INNER JOIN estado est ON e.id_estado = est.id_estado 
+WHERE e.id_envio = '$ID'";
 //echo $sql;
 
 echo $ID;

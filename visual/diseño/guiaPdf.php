@@ -65,7 +65,9 @@ INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
 INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
 INNER JOIN estado est ON e.id_estado = est.id_estado 
-WHERE e.id_envio = $ID"; 
+WHERE e.id_envio = '$ID'";
+
+ 
 //echo $sql;
 
 $EnvioResult=mysqli_query($conexion, $sqldocumento);
