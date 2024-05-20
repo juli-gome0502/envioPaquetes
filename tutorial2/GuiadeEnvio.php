@@ -208,105 +208,107 @@ if (isset($_POST['mostrar'])) {
 
     
       <button type="button" class="btn btn-info"><a href="./index.php">Crear</a></button>
-
-        
-        <br>
-        <table id="mitabla" class="table text-center table-sm mx-auto  table-hover mt-4">
-            <thead class="">
-                <tr>
-                    <th >#</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Teléfono</th>
-                    <th>destino</th>
-                    <th>fecha inicio</th>
-                    <th>fecha fin</th>
-                    <th>pago</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-                $error = false;
-                                // Replace with your actual database configuration details
-                $config = array(
-                    'db' => array(
-                    'host' => 'localhost', // Database host (usually 'localhost')
-                    'name' => 'bd_safe_delivery2', // Your database name
-                    'user' => 'root', // Your database username
-                    'pass' => '', // Your database password
-                    'options' => array(
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Set error handling mode
-                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Default fetch mode
-                    )
-                    )
-                );
-
-                try {
-                $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
-                $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-
-                } catch(PDOException $error) {
-                $error = $error->getMessage();
-                }
-
-                    // Pagination variables (ajústalas según sea necesario)
-                    $records_per_page = 8; // Número de registros por página
-                    $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Obtener la página actual desde la URL o establecerla en 1
-
-                    $stmt = $conexion->prepare($sqlEnvio);
-                    $stmt->execute();
-                    $total_records = $stmt->rowCount(); // Obtener el número total de registros
-
-                    $total_pages = ceil($total_records / $records_per_page); // Calcular el total de páginas
-
-                    // Limitar la consulta según la página actual
-                    $offset = ($current_page - 1) * $records_per_page;
-                    $sqlEnvio .= " LIMIT $offset, $records_per_page";
-                    $envio = $conexion->query($sqlEnvio);
-                    $id_envio_array = array();
-
-                // Check if there are any results   
-                    foreach ($EnvioResult as $fila){
-                        $id_envio_array[] = $fila['id_envio'];
-                ?>
-                <tr>
-                    <td><?php echo $fila['id_envio']; ?></td>
-                    <td><?php echo $fila['nombre_us']; ?></td>
-                    <td><?php echo $fila['apellido_us']; ?></td>
-                    <td><?php echo $fila['n_documento_us']; ?></td>
-                    <td><?php echo $fila['nombre_destinatario']; ?></td>
-                    <td><?php echo $fila['apellido_destinatario']; ?></td>
-                    <td><?php echo $fila['telefono_des']; ?></td>
-                    <td><?php echo $fila['nombre_destino']; ?></td>
-                    <td><?php echo $fila['fecha_envio']; ?></td>
-                    <td><?php echo $fila['fecha_estimada']; ?></td>
-                    
-                    <td><?php echo $fila['pago']; ?></td>
-                    <td><?php echo $fila['nombre_estado']; ?></td>
-                    <td>
-                    <button type="button" class="btn btn-outline-info"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"></i></a><br />
-                    </button>               
-                    <a  class="btn btn-sm btn-warning" href="./EditarEnvioPa.php?id_envio=<?php echo $fila['id_envio'];?>"><i class="fa-solid fa-pen-to-square"></i></a>
- 
-                     </td>
-                     
-
-                </tr>
-
+    <div class="row">
+        <div class="col-sm-10">
+            <br>
+            <table id="mitabla" class="table text-center table-sm mx-auto table-hover mt-4">
+                 <thead class="">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Teléfono</th>
+                        <th>destino</th>
+                        <th>fecha inicio</th>
+                        <th>fecha fin</th>
+                        <th>pago</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
-            }
-                ?>
-                
+                    $error = false;
+                                    // Replace with your actual database configuration details
+                    $config = array(
+                        'db' => array(
+                        'host' => 'localhost', // Database host (usually 'localhost')
+                        'name' => 'bd_safe_delivery2', // Your database name
+                        'user' => 'root', // Your database username
+                        'pass' => '', // Your database password
+                        'options' => array(
+                            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Set error handling mode
+                            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Default fetch mode
+                        )
+                        )
+                    );
 
-            </tbody>
-            
-        </table>
+                    try {
+                    $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
+                    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+
+                    } catch(PDOException $error) {
+                    $error = $error->getMessage();
+                    }
+
+                        // Pagination variables (ajústalas según sea necesario)
+                        $records_per_page = 8; // Número de registros por página
+                        $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Obtener la página actual desde la URL o establecerla en 1
+
+                        $stmt = $conexion->prepare($sqlEnvio);
+                        $stmt->execute();
+                        $total_records = $stmt->rowCount(); // Obtener el número total de registros
+
+                        $total_pages = ceil($total_records / $records_per_page); // Calcular el total de páginas
+
+                        // Limitar la consulta según la página actual
+                        $offset = ($current_page - 1) * $records_per_page;
+                        $sqlEnvio .= " LIMIT $offset, $records_per_page";
+                        $envio = $conexion->query($sqlEnvio);
+                        $id_envio_array = array();
+
+                    // Check if there are any results   
+                        foreach ($EnvioResult as $fila){
+                            $id_envio_array[] = $fila['id_envio'];
+                    ?>
+                    <tr>
+                        <td><?php echo $fila['id_envio']; ?></td>
+                        <td><?php echo $fila['nombre_us']; ?></td>
+                        <td><?php echo $fila['apellido_us']; ?></td>
+                        <td><?php echo $fila['n_documento_us']; ?></td>
+                        <td><?php echo $fila['nombre_destinatario']; ?></td>
+                        <td><?php echo $fila['apellido_destinatario']; ?></td>
+                        <td><?php echo $fila['telefono_des']; ?></td>
+                        <td><?php echo $fila['nombre_destino']; ?></td>
+                        <td><?php echo $fila['fecha_envio']; ?></td>
+                        <td><?php echo $fila['fecha_estimada']; ?></td>
+                        
+                        <td><?php echo $fila['pago']; ?></td>
+                        <td><?php echo $fila['nombre_estado']; ?></td>
+                        <td>
+                        <button type="button" class="btn btn-outline-info"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"></i></a><br />
+                        </button>               
+                        <a  class="btn btn-sm btn-warning" href="./EditarEnvioPa.php?id_envio=<?php echo $fila['id_envio'];?>"><i class="fa-solid fa-pen-to-square"></i></a>
+    
+                        </td>
+                        
+
+                    </tr>
+
+                    <?php
+                }
+                    ?>
+                    
+
+                </tbody>
+                
+            </table>
         
+        </div>
+    </div>
 
 <script>
 function printDocument(event, url) {

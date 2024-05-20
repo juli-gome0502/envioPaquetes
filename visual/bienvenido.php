@@ -34,10 +34,7 @@
         <li class="navli">
           <a  class="nava" href="../visual/reporteUsu/pdfUsuario.php">Envios Realizados</a>
         </li>
-        <li class="navli">
-          <a class="nava"  href="../visual/notoficacion.php">Notificaciones </a>
-        </li>
-        
+       
         
     </ul>
     <div class="row  sl">
@@ -93,12 +90,12 @@
         </P>
     </div>
     
-    <button type="button" id="cerrar" class="btn" onclick="window.location.href='../visual/cerrar_sesion.php'">Salir</button>
+    <button type="button" id="cerrar" class="btn btn-info" onclick="window.location.href='../visual/cerrar_sesion.php'">Salir</button>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/4aZT6UO2/O+0495CT4tG9kXH7Zk//mkkn/1M0" crossorigin="anonymous"></script>
     
-    <img class="usuaico" src="../img/usuario.png" alt="">
+    
     
    
     

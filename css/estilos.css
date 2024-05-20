@@ -126,6 +126,15 @@ main{
     font-size: 16px;
     outline: none;
 }
+#id_tipo_documento{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+}
 
 .form-group{
     width: 100%;
@@ -137,14 +146,14 @@ main{
     outline: none;
 }
 /* Estilos para el select */
-select {
+select{
     /* Establece el mismo tamaño de fuente y altura que el input */
     font-size: 16px;
     height: 30px;
     /* Alinea el texto verticalmente en el centro */
     vertical-align: middle;
     /* Establece el mismo color de fondo y borde que el input */
-    background-color: #f2f2f2;
+    background-color: #bcbcbc;
     border: 1px solid #ccc;
     /* Agrega bordes redondeados */
     border-radius: 5px;
@@ -155,7 +164,7 @@ select {
 }
 
 /* Estilos para las opciones del select */
-select option {
+select option{
     /* Establece el mismo tamaño de fuente y altura que el input */
     font-size: 16px;
     height: 30px;

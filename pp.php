@@ -64,21 +64,27 @@
                 <!--Register-->
                 <form action="./conexion/registro_usuario_be.php" method="POST" class="formulario__register">
                     <h2>Regístrarse</h2>
-                    <input type="text"  placeholder="Nombre completo" name="nombre_us" required> 
-                    <input type="text" placeholder="Apellido completo" name="apellido_us"  required>
-                    
-                    <input type="number" placeholder="Documento" name="n_Documento_us"  required>
-                    <select class=""name="tipo_documento" id="tipo_documento" placeholder="Tipo documento">
+                    <input type="text" class="form-control"  placeholder="Nombre completo" name="nombre_us" required> 
+                    <input type="text" class="form-control" placeholder="Apellido completo" name="apellido_us"  required>
+                    <style>
+                        #id_tipo_documento{
+                            background-color: #cccccc;
+                            margin-top:5px;
+                        }
+                    </style>
+                    <input type="number" class="form-control" placeholder="Documento" name="n_Documento_us"  required><br>
+                    <select class="form-control" name="tipo_documento" id="tipo_documento" placeholder="Tipo documento">
+                        <option value="0"></option>
                         <option value="Cedula de ciudadania">Cedula de ciudadania</option>
                         <option value="nit">NIT</option>
                     </select>
 
                    
-                    <input type="number" placeholder="Teléfono" name="telefono"  required>
-                    <input type="text" placeholder="Dirección" name="Direccion"  required>
-                    <input type="text" action="" placeholder="Corre Electronico" name="correo_electronico_us"  required>
-                    <input type="text" placeholder="Usuario" name="usuario"  required>
-                    <input type="password" placeholder="Contraseña" name="contrasena"  required>
+                    <input type="number" class="form-control" placeholder="Teléfono" name="telefono"  required>
+                    <input type="text" class="form-control" placeholder="Dirección" name="Direccion"  required>
+                    <input type="text"class="form-control" action="" placeholder="Corre Electronico" name="correo_electronico_us"  required>
+                    <input type="text" class="form-control" placeholder="Usuario" name="usuario"  required>
+                    <input type="password"class="form-control" placeholder="Contraseña" name="contrasena"  required>
                     <button>Regístrarse</button>
                    
                 </form>
