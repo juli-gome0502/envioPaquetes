@@ -101,10 +101,10 @@ if (count($errores) > 0) {
 
   if($mysqli->query($sqltaq) === TRUE){
 
-      echo " TAQUILLERO CREADO EXITOSAMENTE";
+      echo '<script>alert("Administrador Creado Exitosamente"); window.location = "../visual/login.php";</script>';
   }else{
 
-      echo "REGISTRO NO CREADO" .$sqltaq. "<br>" .$mysqli->error;
+      echo '<script>alert("Administrador Creado Exitosamente"); window.location = "../visual/login.php";</script>' .$sqltaq. "<br>" .$mysqli->error;
   }
 }
 

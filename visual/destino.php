@@ -35,10 +35,73 @@ try {
     <?php include '../menu/menu.php'; ?>
 </header>
 <body>
-
+<style>
+         .buscar {
+        width: 500px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-top: -40px;
+        }
+        .buscar::placeholder {
+        color: #aaa;
+        }
+        .buscar:focus {
+        outline: none;
+        border-color: #0000FF;
+        }
+        .buscar {
+        width: 500px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-top: -40px;
+        }
+        .buscar::placeholder {
+        color: #aaa;
+        }
+        .buscar:focus {
+        outline: none;
+        border-color: skyblue;
+        }
+        .btnBuscar{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+        }
+        .btn-info{
+            color: white;
+        }
+        
+    </style>
     <div class="conrainer col-8 mx-auto py-3">
-        <br><br><br><br>
+        <br><br>
         <h2 class="text-center"><b>DESTINO</b></h2>
+        <div class="form-group mr-3">
+            <br>
+            <center>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <input class="buscar"type="text" id="nombre_destino" name="nombre_destino" placeholder="Buscar por Placas" required>
+                    <button class="btnBuscar" type="submit">Buscar</button>
+                </form>
+            </center>
+            <style>
+                .regresar{
+                    
+                    color:black;
+                }
+            </style>
+           <center>
+           <a href="../visual/Destino.php" class="regresar">Regresar</a>
+           </center>
+      </div>
         <div class="row justify-content-end">
             <div class="col-auto">
                 <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destino</a>
@@ -53,11 +116,44 @@ try {
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
-                    $result =mysqli_query($conexion, "SELECT id_destino, nombre_destino FROM destino");
-                    while($fila = mysqli_fetch_assoc($result)) :
-                        ?>
+             <?php
+              
+              $host = 'localhost';
+              $username = 'root';
+              $password = ''; // Replace with your actual database password
+              $database = 'bd_safe_delivery2';
+
+              try {
+                  $conexion = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+                  $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              } catch(PDOException $e) {
+                  echo "Error: " . $e->getMessage();
+                  exit;
+              }  
+              if (isset($_POST['nombre_destino']) && !empty($_POST['nombre_destino'])) {
+                $sqlDestino = "SELECT id_destino, nombre_destino FROM destino WHERE nombre_destino LIKE '%" . $_POST['nombre_destino'] . "%'";
+            } else {
+                $sqlDestino = "SELECT id_destino, nombre_destino FROM destino";
+            }
+
+                      // Pagination variables (adjust as needed)
+                  $records_per_page = 8; // Number of records per page
+                  $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Get current page from URL or set to 1
+
+                  $stmt = $conexion->prepare($sqlDestino);
+                  $stmt->execute();
+                  $total_records = $stmt->rowCount(); // Get total number of records
+
+                  $total_pages = ceil($total_records / $records_per_page); // Calculate total pages
+
+                  // Limit query based on current page
+                  $offset = ($current_page - 1) * $records_per_page;
+                  $sqlDestino .= " LIMIT $offset, $records_per_page";
+                  $destino = $conexion->query($sqlDestino);      
+              if ($destino) {
+               
+                while ($fila = $destino->fetch(PDO::FETCH_ASSOC)) :
+                    ?>
                         <tr>
                             <td><?php echo $fila['id_destino']; ?></td>
                             <td>
@@ -79,9 +175,37 @@ try {
                            
                             
                         </tr>
-                   <?php endwhile; ?>
+                   <?php endwhile; 
+                   } else {
+                    echo '<div class="container mt-5">
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">¡Taquillero no encontrado!</h4>
+                        <p>No se encontraron taquilleros con el nombre buscado.</p>
+                        <hr>
+                        <p class="mb-0">Por favor, intente con otro nombre o verifique la información ingresada.</p>
+                    </div>
+                </div>';
+                }?>
             </tbody>
         </table>
+        <style>
+            .navPag{
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+         <div class="navPag">
+            <!-- Paginación de Bootstrap -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm">
+                    <?php
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                    }
+                    ?>
+                </ul>
+            </nav>
+         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         <?php include "../modelo/NuevoModalDest.php"; ?>
 

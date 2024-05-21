@@ -142,7 +142,7 @@ if (!$envio) {
   
 .body {
     font-family: sans-serif;
-    background-color: #F2F2F2;
+    background-color: white;
     
   }
   
@@ -341,8 +341,7 @@ background-color: black;
 
         
         <?php
-
-    if (isset($_POST['mostrar'])) {
+ if (isset($_POST['mostrar'])) {
         $detinoSeleccionado = $_POST["cat"];
 
         // Consulta SQL modificada para filtrar por el número de documento seleccionado
@@ -389,7 +388,7 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
         }
 
         // Resto de tu código aquí...
-    }
+    } 
     ?>
     <br>
     <div class="row">
@@ -436,6 +435,73 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
                     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
                     } catch(PDOException $error) {
                     $error = $error->getMessage();
+                }
+                if (isset($_POST['nombre_destinatario']) && !empty($_POST['nombre_destinatario'])) {
+                    $sqlEnvio = "SELECT
+                    e.id_envio,
+                    e.id_usuario,
+                    u.nombre_us,
+                    u.apellido_us,
+                    u.n_documento_us,
+                    e.id_destinatario,
+                    d.nombre_destinatario,
+                    d.apellido_destinatario,
+                    d.telefono_des,
+                    e.direccion,
+                    e.id_destino,
+                    ds.nombre_destino,
+                    e.fecha_envio,
+                    e.fecha_estimada,
+                    tp.id_tipo_paquete,
+                    ps.id_tipo_peso,
+                    v.id_vehiculo,
+                    e.peso,
+                    e.dimensiones,
+                    e.volumen,
+                    e.pago,
+                    e.id_estado,
+                    est.nombre_estado
+                    FROM envio e
+                    JOIN usuario u ON e.id_usuario = u.id_usuario
+                    JOIN destinatario d ON e.id_destinatario = d.id_destinatario
+                    INNER JOIN destino ds ON e.id_destino = ds.id_destino
+                    INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
+                    INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
+                    INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
+                    INNER JOIN estado est ON e.id_estado = est.id_estado WHERE d.nombre_destinatario LIKE '%" . $_POST['nombre_destinatario'] . "%'";
+                } else {
+                    $sqlEnvio = "SELECT
+                    e.id_envio,
+                    e.id_usuario,
+                    u.nombre_us,
+                    u.apellido_us,
+                    u.n_documento_us,
+                    e.id_destinatario,
+                    d.nombre_destinatario,
+                    d.apellido_destinatario,
+                    d.telefono_des,
+                    e.direccion,
+                    e.id_destino,
+                    ds.nombre_destino,
+                    e.fecha_envio,
+                    e.fecha_estimada,
+                    tp.id_tipo_paquete,
+                    ps.id_tipo_peso,
+                    v.id_vehiculo,
+                    e.peso,
+                    e.dimensiones,
+                    e.volumen,
+                    e.pago,
+                    e.id_estado,
+                    est.nombre_estado
+                    FROM envio e
+                    JOIN usuario u ON e.id_usuario = u.id_usuario
+                    JOIN destinatario d ON e.id_destinatario = d.id_destinatario
+                    INNER JOIN destino ds ON e.id_destino = ds.id_destino
+                    INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
+                    INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
+                    INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
+                    INNER JOIN estado est ON e.id_estado = est.id_estado";
                 }
                         // Pagination variables (ajústalas según sea necesario)
                         $records_per_page = 8; // Número de registros por página

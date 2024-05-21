@@ -40,7 +40,7 @@
         <div id="menu-items">
             <div class="item">
                 <a href="../tutorial2/GuiadeEnvio.php">
-                    <div class="icon"><img src="../img/descarga.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/envio.png" alt="" width="100px"></div>
                     <div class="title"><span>Guía de Envío</span></div>
                 </a>
             </div>

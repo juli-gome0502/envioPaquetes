@@ -26,6 +26,11 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 </head>
+<style>
+  .body{
+    background-color: white;
+  }
+</style>
 <body class="body">
     <ul class="menu">
         <li class="navli">

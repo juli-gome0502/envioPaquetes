@@ -25,20 +25,20 @@
         <div id="menu-items">
             <div class="item">
                 <a href="../visual/Taquillero.php">
-                    <div class="icon"><img src="../img/logo.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/usu.png" alt="" width="100px"></div>
                     <div class="title"><span>Taquillero</span></div>
                 </a>
             </div>
             
             <div class="item">
                 <a href="../visual/Conductor.php">
-                    <div class="icon"><img src="../img/conductor.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/conduc.png" alt="" width="100px"></div>
                     <div class="title"><span>Conductor</span></div>
                 </a>
             </div>
             <div class="item">
                 <a href="../visual/TabVehiculo.php">
-                    <div class="icon"><img src="../img/bus.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/camion.png" alt="" width="100px"></div>
                     <div class="title"><span>Vehículo</span></div>
                 </a>
             </div>
@@ -59,13 +59,13 @@
             </div>
             <div class="item">
                 <a href="../visual/TipoPaquete.php">
-                    <div class="icon"><img src="../img/paquete.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/box.png" alt="" width="100px"></div>
                     <div class="title"><span>Tipo Paquete</span></div>
                 </a>
             </div>
             <div class="item">
                 <a href="../visual/TipoPeso.php">
-                    <div class="icon"><img src="../img/pesa.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/peso.png" alt="" width="100px"></div>
                     <div class="title"><span>Tipo Peso</span></div>
                 </a>
             </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="item">
                 <a href="../visual/Vehiculo.php">
-                    <div class="icon"><img src="../img/buses.png" alt="" width="100px"></div>
+                    <div class="icon"><img src="../img/bus-solid.png" alt="" width="100px"></div>
                     <div class="title"><span>Tipo Vehiculo</span></div>
                 </a>
             </div>

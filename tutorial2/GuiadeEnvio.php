@@ -256,14 +256,22 @@ if (isset($_POST['mostrar'])) {
         }
          
 </style>
-
+<style>
+                .regresar{
+                    
+                    color:black;
+                }
+            </style>
+           <center>
+           <a href="./GuiadeEnvio.php" class="regresar">Regresar</a>
+           </center>
         <div class="row justify-content-end">
             <div class="col-auto">
                 <button type="button" class="btncrear"><a href="./index.php"><b>Crear</b></a></button>
             </div>
         </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-lg-12">
             <br>
             <table id="mitabla" class="table text-center table-sm mx-auto table-hover mt-4">
                  <thead class="">
@@ -275,10 +283,10 @@ if (isset($_POST['mostrar'])) {
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Teléfono</th>
-                        <th>destino</th>
-                        <th>fecha inicio</th>
-                        <th>fecha fin</th>
-                        <th>pago</th>
+                        <th>Destino</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Pago</th>
                         <th>Estado</th>
                         <th>Acción</th>
                     </tr>

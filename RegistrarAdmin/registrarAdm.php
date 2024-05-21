@@ -63,6 +63,9 @@ h1{
 .btn-info{
   color:white;
 }
+#contrasena_taq{
+  width: 395px;
+}
   </style>
 <div class="containerAdm">
   <h1>AGREGAR ADMINISTRADOR</h1>
@@ -136,13 +139,33 @@ h1{
         
         
       </div>
-                
+        <style>
+          .btnGuardar {
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+        
+
+        }
+        .cerrar{
+            margin-top:-150px;
+            margin-bottom:-150px;
+            text-decoration: none;
+            text-decoration-line: none;
+            color:white;
+
+        
+        }
+        </style>
           <input type="hidden" id="accion" name="accion" value="NuevoTaquilleroModal">
           <br>
           <div class="">
            <center>
-              <button type="button" class="btn btn-secondary" href="../visual/login.php">Cerrar</button>
-              <button type="submit"name="crear" id="crear" value="crear">Guardar</button>
+              <button type="button" class="btn btn-secondary"><a class="cerrar" href="../visual/login.php"><b>Cerrar</b></a></button>
+              <button class="btnGuardar" type="submit"name="crear" id="crear" value="crear"><b>Guardar</b></button>
            </center>
           </div>
           

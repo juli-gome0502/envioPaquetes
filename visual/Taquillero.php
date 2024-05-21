@@ -82,13 +82,22 @@ if (!$taquillero) {
         </style>  
         <center><h2 class="text-center"><b>INFORMACIÓN TAQUILLERO</b></h2></center>
         <div class="form-group mr-3">
-            <br><br>
+            <br>
             <center>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <input class="buscar"type="text" id="nombre_taq" name="nombre_taq" placeholder="Buscar por nombre" required>
                     <button class="btnBuscar" type="submit"><b>Buscar</b></button>
                 </form>
             </center>
+            <style>
+                .regresar{
+                    
+                    color:black;
+                }
+            </style>
+           <center>
+           <a href="../visual/Taquillero.php" class="regresar">Regresar</a>
+           </center>
       </div>
     
       

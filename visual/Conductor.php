@@ -142,7 +142,7 @@ $total_pages = ceil($total_records / $per_page);
     <div class="conrainer col-10 mx-auto py-3">
         <br><br><br>
         <h2 class="text-center"><b>INFORMACIÓN CONDUCTOR</b></h2>
-        <br>    
+         
         <div class="form-group mr-3">
             <br>
             <center>
@@ -150,13 +150,24 @@ $total_pages = ceil($total_records / $per_page);
                     <input class="buscar"type="text" id="nombre_con" name="nombre_con" placeholder="Buscar por nombre" required>
                     <button class="btnBuscar" type="submit">Buscar</button>
                 </form>
+                
+                
             </center>
+            <style>
+                .regresar{
+                    
+                    color:black;
+                }
+            </style>
+           <center>
+           <a href="../visual/Conductor.php" class="regresar">Regresar</a>
+           </center>
       </div>
     
       
         <div class="row justify-content-end">
             <div class="col-auto">
-                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoConductorModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Taquillero</a>
+                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoConductorModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Conductor</a>
             </div>
         </div>
         <br>
