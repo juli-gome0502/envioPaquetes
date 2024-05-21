@@ -343,7 +343,7 @@ if (isset($_POST['mostrar'])) {
                         <td><?php echo $fila['pago']; ?></td>
                         <td><?php echo $fila['nombre_estado']; ?></td>
                         <td>
-                        <button type="button" class="btn btn-dark"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"></i></a><br />
+                        <button type="button" class="btn btn-primary"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fa-solid fa-print" style="color: #ffffff;"></i></i></a><br />
                         </button>               
                         <a  class="btn btn-sm btn-warning" href="./EditarEnvioPa.php?id_envio=<?php echo $fila['id_envio'];?>"><i class="fa-solid fa-pen-to-square"></i></a>
     

@@ -96,35 +96,22 @@ if (count($errores) > 0) {
     echo 'window.location = "../visual/login.php";</script>';
     exit();
 }else{
-    $sql = "INSERT INTO taquillero_geren(nombre_taq, apellido_taq, correo_electronico_taq, telefono_ta, usuario_taq, contrasena_taq, us_tipo)
-    VALUES ('$nombre_taq', '$apellido_taq', '$correo_electronico_taq', '$telefono_ta', '$usuario_taq' , '$contrasena_taq' , '$us_tipo')";
-  
-  $stmt = $mysqli->prepare($sql);
-  $stmt->bind_param('ssssiis', $nombre_taq, $apellido_taq, $correo_electronico_taq, $telefono_ta, $usuario_taq, $contrasena_taq, $us_tipo);
+  $sqltaq="INSERT INTO taquillero_geren(ID_TAQUILLERO,ID_ESTADO_TAQUILLERO, NOMBRE_TAQ, APELLIDO_TAQ, CORREO_ELECTRONICO_TAQ, TELEFONO_TA, USUARIO_TAQ, CONTRASENA_TAQ, US_TIPO) 
+  VALUES('','1','$nombre_taq','$apellido_taq', '$correo_electronico_taq','$telefono_ta','$usuario_taq','$contrasena_taq','$us_tipo')";
 
-  $ejecutar = $stmt->execute();
-  // Ejecuta la consulta de inserción
+  if($mysqli->query($sqltaq) === TRUE){
 
-if ($ejecutar) {
-    echo '<script>alert("Administrador almacenado exitosamente"); window.location = "../visual/login.php";</script>';
-} else {
-    echo '<script>alert("Inténtalo de nuevo, Administrador no almacenado"); window.location = "../visual/login.php";</script>';
+      echo " TAQUILLERO CREADO EXITOSAMENTE";
+  }else{
+
+      echo "REGISTRO NO CREADO" .$sqltaq. "<br>" .$mysqli->error;
+  }
 }
 
 // Verifica que el correo no se repita
-$sql_correo = "SELECT * FROM taquillero_geren WHERE correo_electronico_taq = :correo_electronico_taq";
-$stmt_correo = $mysqli->prepare($sql_correo);
-$stmt_correo->bind_param('s', $correo_electronico_taq);
-$stmt_correo->execute();
-
-if ($stmt_correo->rowCount() > 0) {
-    echo '<script>alert("Este correo ya está registrado, intenta con otro diferente"); window.location = "../visual/login.php";</script>';
-    exit();
-}
 
 // Cierra la conexión a la base de datos
 $mysqli->close();
-}
 
 
 ?>

@@ -38,21 +38,51 @@ try {
         <br> 
         <center><h2 class="text-center"><b>INFORMACIÓN DESTINATARIO</b></h2></center>
          
-       
+       <style>
+        .btnBuscar{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+            }
         
+            .buscar {
+        width: 500px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-top: -40px;
+        }
+        .buscar::placeholder {
+        color: #aaa;
+        }
+        .buscar:focus {
+        outline: none;
+        border-color: skyblue;
+        }
+        
+       </style>
+       <br>
+        
+        <center>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input class="buscar" type="text" id="telefono_des" name="telefono_des" placeholder="Buscar por teléfono" required>
         <button class="btnBuscar" type="submit"><b>Buscar</b></button>
          </form>
+        </center>
 
             <div class="row justify-content-end">
             <div class="col-auto">
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NuevoDestiModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destinatario</a>
+                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#NuevoDestiModal"><i class="fa-solid fa-circle-plus"></i> Nuevo Destinatario</a>
             </div>
         </div>
         
-        <table class="table table-sm mx-auto  table-hover mt-4">
-            <thead class="table-dark">
+        <table class="table table-lg mx-auto  table-hover mt-4">
+            <thead class="table">
                 <tr>
                     <th >#</th>
                     <th>Nombre Destinatario</th>

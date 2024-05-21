@@ -78,6 +78,7 @@ if (!$taquillero) {
             .btn-info{
                 color: white;
             }
+            
         </style>  
         <center><h2 class="text-center"><b>INFORMACIÓN TAQUILLERO</b></h2></center>
         <div class="form-group mr-3">

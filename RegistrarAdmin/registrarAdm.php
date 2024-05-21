@@ -66,6 +66,7 @@ h1{
   </style>
 <div class="containerAdm">
   <h1>AGREGAR ADMINISTRADOR</h1>
+  
     <form action="../RegistrarAdmin/guardarAdm.php" method="POST">
       <div class="row">
         <div class="col-sm-6">
@@ -106,14 +107,14 @@ h1{
         <div class="col-sm-6">
           <div class="mb-3">
             <label for="nombre" class="form-label">Contraseña</label>
-            <input type="text" name="contrasena_taq" id="contrasena_taq" class="form-control" required>
+            <input type="password" name="contrasena_taq" id="contrasena_taq" class="form-control" required>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
           <div class="mb-3">
-            <label for="nombre" class="form-label">Tipo Usuario</label>
+            <label for="nombre" class="form-label">Tipos Usuario</label>
             <select class="form-select mb-3" id="us_tipo" name="us_tipo">
               <option selected disabled>---Seleccionar Tipo Usuario---</option>
               <?php
@@ -127,9 +128,9 @@ h1{
                   echo "<option value='".$resultado['id_tipo_usuario']."'>".$resultado
                   ['nombre_usuario']."</option>";
                 }
-                
               ?>
             </select>
+            
           </div>
         </div>
         
@@ -141,9 +142,10 @@ h1{
           <div class="">
            <center>
               <button type="button" class="btn btn-secondary" href="../visual/login.php">Cerrar</button>
-               <button type="submit" class="btn btn-info" href=""><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+              <button type="submit"name="crear" id="crear" value="crear">Guardar</button>
            </center>
           </div>
+          
     </form>
 </div>
 </body>
