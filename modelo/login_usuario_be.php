@@ -32,7 +32,7 @@ if ($resultado->num_rows > 0) {
     exit();
 } else {
     // Mostrar mensaje de error de manera segura
-    echo '<script>alert("Usuario o Contraseña incorrectos"); window.location = "../visual/registro.php";</script>';
+    echo '<script>alert("Usuario o Contraseña incorrectos"); window.location = "../pp.php";</script>';
     exit();
 }
 

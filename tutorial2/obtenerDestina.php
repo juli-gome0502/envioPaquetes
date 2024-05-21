@@ -24,7 +24,7 @@ if ($result !== false) {
         // Agregar el campo oculto para el ID de destinatario
         echo "<input type='hidden' id='id_destinatario' name='id_destinatario' value='" . $userData['id_destinatario'] . "'>";
     } else {
-        echo "No se encontró ningún destinatario con ese nombre.";
+        echo "";
     }
 } else {
     echo "Error en la consulta: " . mysqli_error($conexion);

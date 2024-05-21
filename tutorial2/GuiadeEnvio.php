@@ -101,7 +101,10 @@ if (!$envio) {
   <script src="../js/jquery-3.7.1.min.js"></script>
 
 </head>
+<header>
+    <?php include "../menu/menuTaq.php"; ?>
 
+</header>
 <body class="body1">
     <style>
         .buscar {
@@ -136,23 +139,56 @@ if (!$envio) {
             .btn-info{
                 color: white;
             }
+            .mostrar{
+                background-color: skyblue; 
+                border-radius: 20px;
+                color:white;
+                border: none;
+                width: 100px;
+                height: 50px;
+            }
+            #selc {
+            width: 500px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 1em;
+            margin-top: -40px;
+            }
+            #selc::placeholder {
+            color: #aaa;
+            }
+            #selc:focus {
+            outline: none;
+            border-color: skyblue;
+        }
+        .btncrear{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+            
+        }
+        
         </style>  
         <center><h2 class="text-center"><b>INFORMACIÓN GUÍA ENVIO</b></h2></center>
-        <div class="form-group mr-3">
-    <br><br>
-    
-</div>
+        <br>
+<center>
 <form method="post">
     <label for="cat">N° Documento</label>
-    <select name="cat" class="custom-select my-1 mr-sm-2" required>
+    <select id="selc" name="cat" class="custom-select my-1 mr-sm-2" required>
         <option value="">Seleccionar</option>
         <?php foreach ($envio as $n_documeto_us): ?>
             <option value="<?php echo $n_documeto_us['id_usuario']; ?>"><?php echo $n_documeto_us['n_documento_us']; ?></option>
         <?php endforeach ?>
     </select>
-    <button type="submit" name="mostrar" class="btn btn-primary my-1">Mostrar</button>
+    <button type="submit" name="mostrar" class="btn mostrar"><b>Mostrar</b></button>
 </form>
 
+</center>
 <?php
 
 if (isset($_POST['mostrar'])) {
@@ -205,11 +241,29 @@ if (isset($_POST['mostrar'])) {
     // Resto de tu código aquí...
 }
 ?>
+<style>
+     .btncrear a{
+            margin-top:-150px;
+            margin-bottom:-150px;
+            text-decoration: none;
+            text-decoration-line: none;
+            color:white;
 
-    
-      <button type="button" class="btn btn-info"><a href="./index.php">Crear</a></button>
+        
+        }
+        .table{
+            margin-top:-100px;
+        }
+         
+</style>
+
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <button type="button" class="btncrear"><a href="./index.php"><b>Crear</b></a></button>
+            </div>
+        </div>
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-12">
             <br>
             <table id="mitabla" class="table text-center table-sm mx-auto table-hover mt-4">
                  <thead class="">
@@ -289,7 +343,7 @@ if (isset($_POST['mostrar'])) {
                         <td><?php echo $fila['pago']; ?></td>
                         <td><?php echo $fila['nombre_estado']; ?></td>
                         <td>
-                        <button type="button" class="btn btn-outline-info"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"></i></a><br />
+                        <button type="button" class="btn btn-dark"><a class="link" href="../diseño/guiaPdf.php?idCat=<?php echo $fila['id_envio'];?>" target="_blank" onclick="printDocument(event, this.href);"><i class="fas fa-print"></i></a><br />
                         </button>               
                         <a  class="btn btn-sm btn-warning" href="./EditarEnvioPa.php?id_envio=<?php echo $fila['id_envio'];?>"><i class="fa-solid fa-pen-to-square"></i></a>
     

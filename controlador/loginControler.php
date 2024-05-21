@@ -31,7 +31,7 @@ if ($resultado->num_rows > 0) {
             header("Location: ../visual/taquillero.php");
             break;
         case 2:
-            header("Location: ../visual/cli_catalogo.php");
+            header("Location: ../tutorial2/GuiadeEnvio.php");
             break;
         default:
             echo "Tipo de usuario no válido";

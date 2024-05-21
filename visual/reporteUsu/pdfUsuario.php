@@ -294,31 +294,52 @@ background-color: black;
     width: 650px;
     
 }
-
+#mitabla{
+    margin-left:100px;
+}
  </style>
 <body class="body1">
     <br><br><br><br>
     <style>
-        .mostrar{
-            width: 100px;
-
+        .buscar {
+        width: 500px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-top: -40px;
         }
-    </style>
-    <center><h2 class="text-center"><b>INFORMACIÓN GUÍA ENVIO</b></h2></center>
+        .buscar::placeholder {
+        color: #aaa;
+        }
+        .buscar:focus {
+        outline: none;
+        border-color: skyblue;
+        }
+        .btnBuscar{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+            }
+            body {
+    font-family: sans-serif;
+    background-color: #F2F2F2;
     
+  }
+    </style>
+    <center><h2 class="text-center"><b>INFORMACIÓN GUÍA ENVIO</b></h2></center><br>
+    <center>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <input class="buscar"type="text" id="id_destinatario" name="nombre_destinatario" placeholder="Buscar por nombre" required>
+                    <button class="btnBuscar" type="submit"><b>Buscar</b></button>
+                </form>
+            </center>
 
-        <form method="post">
-            <label for="cat">Destino</label>
-            <select name="cat" class="custom-select my-1 mr-sm-2 " required>
-                <option value="">Seleccionar</option>
-                <?php foreach ($envio as $nombre_destino):        $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
- ?>
-                    <option value="<?php echo $nombre_destino['id_destino']; ?>"><?php echo $nombre_destino['nombre_destino']; ?></option>
-                <?php endforeach ?>
-            </select>
-            <button type="submit" name="mostrar" class="btn btn-info mostrar">Mostrar</button>
-        </form>
-
+        
         <?php
 
     if (isset($_POST['mostrar'])) {
@@ -370,6 +391,7 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
         // Resto de tu código aquí...
     }
     ?>
+    <br>
     <div class="row">
         <div class="col-lg-10">
             <table id="mitabla" class="table text-center table-sm table-condensed   table-hover mt-4">
@@ -494,7 +516,23 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         
-        
+            <style>
+      #cerrar{
+        margin-top: -280px;
+        margin-left:650px;
+        color:white;
+        width: 100px;
+        background-color: skyblue; 
+        border-radius: 20px;
+        color:white;
+        border: none;
+        width: 100px;
+        height: 50px;
+      }
+     
+
+    </style>
+    <button type="button" id="cerrar" class="btn btn-info" onclick="window.location.href='../cerrar_sesion.php'">Salir</button>
         
     </div>
 

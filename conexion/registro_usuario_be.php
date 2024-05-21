@@ -109,7 +109,7 @@ if (count($errores) > 0) {
     foreach ($errores as $error) {
         echo "alert('$error');";
     }
-    echo 'window.location = "../index.php";</script>';
+    echo 'window.location = "../pp.php";</script>';
     exit();
 }else{
     $sql = "INSERT INTO usuario (nombre_us, apellido_us, n_Documento_us, tipo_documento, telefono, Direccion, correo_electronico_us, usuario, contrasena)
@@ -128,9 +128,9 @@ $stmt->bindParam(':contrasena', $contrasena);
 $ejecutar = $stmt->execute(); // Ejecuta la consulta de inserción
 
 if ($ejecutar) {
-    echo '<script>alert("Usuario almacenado exitosamente"); window.location = "../index.php";</script>';
+    echo '<script>alert("Usuario almacenado exitosamente"); window.location = "../pp.php";</script>';
 } else {
-    echo '<script>alert("Inténtalo de nuevo, usuario no almacenado"); window.location = "../index.php";</script>';
+    echo '<script>alert("Inténtalo de nuevo, usuario no almacenado"); window.location = "../pp.php";</script>';
 }
 
 // Verifica que el correo no se repita
@@ -140,7 +140,7 @@ $stmt_correo->bindParam(':correo_electronico_us', $correo_electronico_us);
 $stmt_correo->execute();
 
 if ($stmt_correo->rowCount() > 0) {
-    echo '<script>alert("Este correo ya está registrado, intenta con otro diferente"); window.location = "../index.php";</script>';
+    echo '<script>alert("Este correo ya está registrado, intenta con otro diferente"); window.location = "../pp.php";</script>';
     exit();
 }
 

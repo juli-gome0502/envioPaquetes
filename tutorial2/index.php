@@ -12,11 +12,63 @@
 </head>
 
 <body>
+    <style>
+        .container{
+            width: 800px;
+            background-color: #F2F2F2;
+            position: relative; /* Enable positioning for the container */
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 20px; /* Add some padding for content */
+            background-color: #fff; /* Set background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a box shadow */
+            transition: box-shadow 0.3s ease-in-out; /* Add a smooth transition for the shadow */
+            display: flex; /* Enable flexbox layout */
+            flex-direction: column; /* Arrange items vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; 
+            padding-left:50px;
+            
+
+        }
+        .container input{
+            width: 700px;
+        }
+        .container select{
+            width: 700px;
+        }
+        .in{
+            width: 500px;
+        }
+        #peso{
+            margin-left:10px;
+        }
+        .btncrear{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+            margin-top:580px;
+            margin-left:-250px;
+        }
+        .btnreg{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 100px;
+            height: 50px;
+            margin-top:580px;
+            margin-left:-220px;
+        }
+        
+    </style>
     <div class="container">
         <br>
         <br>
         <center>
-            <h2>COMO LLENAR CAMPOS CON SELECT OPTION - SOFTCODEPM</h2>
+            <h2><b>CREAR GUÍA DE ENVÍO</b></h2>
         </center>
         <br>
         <form  id="codeForm" method="POST" action="./guardaGuia.php">
@@ -24,7 +76,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="col-lg-10 form-group">
-                        <label class="form-label">DOCUMENTO</label>
+                        <label class="form-label"><b>N° DOCUMENTO</b></label>
                         <select class="form-control" required id="id_usuario" name="id_usuario">
                             <option value="0">--Selecciona una opcion--</option>
                             <?php
@@ -50,70 +102,72 @@
 
                 </div>
                 
-                    <br><br>
+                    <br>
                     <div>
                         <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección">
                     </div><br><br>
                     
-                        <select class=" form-select mb-3" name="id_destino">
-                        <option selected disabled>---Seleccionar Destino---</option>
-                        <?php
-                        
-                            $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');   
-                            if ($conexion->connect_error) {
-                            die("Connection failed: " . $conexion->connect_error);
-                            }
-                            $sql = $conexion->query("SELECT id_destino,nombre_destino FROM destino");
-                            while ($resultado = $sql->fetch_assoc()) {
-                            echo "<option value='".$resultado['id_destino']."'>".$resultado
-                            ['nombre_destino']."</option>";
+                    <div class="in">
+                        <select id="destino" class="form-select mb-3" name="id_destino">
+                            <option selected disabled>---Seleccionar Destino---</option>
+                            <?php
+                            
+                                $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');   
+                                if ($conexion->connect_error) {
+                                die("Connection failed: " . $conexion->connect_error);
+                                }
+                                $sql = $conexion->query("SELECT id_destino,nombre_destino FROM destino");
+                                while ($resultado = $sql->fetch_assoc()) {
+                                echo "<option value='".$resultado['id_destino']."'>".$resultado
+                                ['nombre_destino']."</option>";
 
-                            }
+                                }
 
-                        ?>
-                        </select><br><br>
-                        <select class=" form-select mb-3" name="id_tipo_paquete">
-                            <option selected disabled>---Seleccionar paquete---</option>
-                                <?php
-                                
-                                    $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');   
-                                    if ($conexion->connect_error) {
-                                    die("Connection failed: " . $conexion->connect_error);
-                                    }
-                                    $sql = $conexion->query("SELECT id_tipo_paquete,nombre_tipo_paquete FROM tipo_paquete");
-                                    while ($resultado = $sql->fetch_assoc()) {
-                                    echo "<option value='".$resultado['id_tipo_paquete']."'>".$resultado
-                                    ['nombre_tipo_paquete']."</option>";
+                            ?>
+                            </select>
+                            <select class=" form-select mb-3" name="id_tipo_paquete">
+                                <option selected disabled>---Seleccionar paquete---</option>
+                                    <?php
+                                    
+                                        $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');   
+                                        if ($conexion->connect_error) {
+                                        die("Connection failed: " . $conexion->connect_error);
+                                        }
+                                        $sql = $conexion->query("SELECT id_tipo_paquete,nombre_tipo_paquete FROM tipo_paquete");
+                                        while ($resultado = $sql->fetch_assoc()) {
+                                        echo "<option value='".$resultado['id_tipo_paquete']."'>".$resultado
+                                        ['nombre_tipo_paquete']."</option>";
 
-                                    }
+                                        }
 
-                                ?>
-                        </select><br><br>
-                        <select class=" form-select mb-3" name="id_tipo_peso">
-                        <option selected disabled>---Seleccionar peso---</option>
-                        <?php
-                        
-                            $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');   
-                            if ($conexion->connect_error) {
-                            die("Connection failed: " . $conexion->connect_error);
-                            }
-                            $sql = $conexion->query("SELECT id_tipo_peso,nombre_tipo_peso FROM tipo_peso");
-                            while ($resultado = $sql->fetch_assoc()) {
-                            echo "<option value='".$resultado['id_tipo_peso']."'>".$resultado
-                            ['nombre_tipo_peso']."</option>";
+                                    ?>
+                            </select>
+                            <select class=" form-select mb-3" name="id_tipo_peso">
+                            <option selected disabled>---Seleccionar peso---</option>
+                            <?php
+                            
+                                $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');   
+                                if ($conexion->connect_error) {
+                                die("Connection failed: " . $conexion->connect_error);
+                                }
+                                $sql = $conexion->query("SELECT id_tipo_peso,nombre_tipo_peso FROM tipo_peso");
+                                while ($resultado = $sql->fetch_assoc()) {
+                                echo "<option value='".$resultado['id_tipo_peso']."'>".$resultado
+                                ['nombre_tipo_peso']."</option>";
 
-                            }
+                                }
 
-                        ?>
+                            ?>
                         </select>
-                    <input type="number" class="form-control" name="peso" placeholder="Peso" require>
+                    </div>
+                    <input type="number" id="peso" class="form-control" name="peso" placeholder="Peso" require>
                 
                     
             </div>
             <div class="row">
                 <div class="col-lg-10">
-                    <div class="form-group">
-                            <label class="form-label">Teléfono Destinatario</label>
+                    <div class="form-group"><br>
+                            <label class="form-label"><b>Teléfono Destinatario</b></label>
                             <select class="form-control" required id="id_destinatario" name="id_destinatario">
                                 <option value="0">--Selecciona una opcion--</option>
                                 <?php
@@ -129,15 +183,15 @@
 
                             </select>
                     </div>
-                    <br>
+                   
                     <div class="form-group" id="select3lista">
                     
                 </div>
                 <div class="col-lg-10"><br>
                     <input type="numbre" class="form-control" name="dimensiones" placeholder="Dimensiones">
-                </div>
+                </div><br>
                 <div class="col-lg-10">
-                    <br>
+                    
                     <input type="number" class="form-control" name="volumen" id="volumen" placeholder="Volumen">
                 </div><br>
                 
@@ -168,10 +222,13 @@
                 </div><br>
                 <div class="col-lg-10">
                 <input type="text" placeholder="Pago" name="pago" class="form-control">
-                </div>
                 
+                </div>
+                <br>
             </div>
-            <button class="btn btn-info">Crear</button>
+            
+            <button class="btncrear">Crear</button>
+            <button href="./GuiadeEnvio.php" class="btnreg">Regresar</button>
         </form>
     </div>
 </body>

@@ -89,7 +89,22 @@
             total de nuestros clientes.
         </P>
     </div>
-    
+    <style>
+      #cerrar{
+        margin-top: -280px;
+        margin-left:650px;
+        color:white;
+        width: 100px;
+        background-color: skyblue; 
+        border-radius: 20px;
+        color:white;
+        border: none;
+        width: 100px;
+        height: 50px;
+      }
+     
+
+    </style>
     <button type="button" id="cerrar" class="btn btn-info" onclick="window.location.href='../visual/cerrar_sesion.php'">Salir</button>
 
 

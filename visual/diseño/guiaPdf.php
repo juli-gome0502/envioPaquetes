@@ -48,9 +48,12 @@ e.id_destino,
 ds.nombre_destino,
 e.fecha_envio,
 e.fecha_estimada,
-tp.id_tipo_paquete,
-ps.id_tipo_peso,
-v.id_vehiculo,
+e.id_tipo_paquete,
+tp.nombre_tipo_paquete,
+e.id_tipo_peso,
+ps.nombre_tipo_peso,
+e.id_vehiculo,
+v.placas,
 e.peso,
 e.dimensiones,
 e.volumen,
@@ -65,7 +68,7 @@ INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
 INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
 INNER JOIN estado est ON e.id_estado = est.id_estado 
-WHERE e.id_envio = '$ID'";
+WHERE e.id_envio = $ID";
 
  
 //echo $sql;

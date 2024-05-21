@@ -153,39 +153,62 @@ if ($conexion->connect_error) {
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+  <style>
+    .container{
+      width: 800px;
+      background-color: #F2F2F2;
+      position: relative; /* Enable positioning for the container */
+      margin: 0 auto; /* Center the container horizontally */
+      padding: 20px; /* Add some padding for content */
+      background-color: #fff; /* Set background color */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a box shadow */
+      transition: box-shadow 0.3s ease-in-out; /* Add a smooth transition for the shadow */
+      display: flex; /* Enable flexbox layout */
+      flex-direction: column; /* Arrange items vertically */
+      align-items: center; /* Center items horizontally */
+      justify-content: center; 
+      padding-left:50px;
+      margin-left:-200px;
+    }
+    .container input{
+      width: 500px;
+    }
+    #nombre_estado{
+      width: 500px;
+    }
+  </style>
 
 <div class="container">
     <div class="row">
-        <h2 style="text-align:center">Modificar estado</h2>
+        <center><h2 style="text-align:center">Modificar estado</h2></center>
     </div>
 
     <form class="form-horizontal" method="POST" action="./getUserDetails.php" autocomplete="off">
       <input type="hidden" name="id_envio" value="<?php echo $fila['id_envio']; ?>">
-      <label for="">N° Guia de envío</label>
+      <label for="">N° Guia de envío</label><br>
       <input type="text" class="form-control n1" disabled value="<?php echo $fila['id_envio']; ?>">
-      <br>
-      <label for="">Fecha Creada</label>
+      <br><br>
+      <label for="">Fecha Creada</label><br>
       <input type="text" class="form-control n2" disabled value="<?php echo $fila['fecha_envio']; ?>">
-      <br>
-      <label for="">Fecha Estimada</label>
-      <input type="text" class="form-control n3" disabled value="<?php echo $fila['fecha_estimada']; ?>"><br>
-      <label for="">Nombre</label>
+      <br><br>
+      <label for="">Fecha Estimada</label><br>
+      <input type="text" class="form-control n3" disabled value="<?php echo $fila['fecha_estimada']; ?>"><br><br>
+      <label for="">Nombre</label><br>
       <input type="text" class="form-control in1" disabled value="<?php echo $fila['nombre_us']; ?>">
-
+      <br>      <br>
       <div class="form-group">
-        <label for="apellido_us" class="col-sm-2 control-label">Apellido</label>
-        <input type="text" name="apellido_us" id="apellido_us" class="form-control" value="<?php echo $fila['apellido_us'];?>" required>
+        <label for="apellido_us" class="col-sm-2 control-label">Apellido</label><br>
+        <input type="text" name="apellido_us"disabled id="apellido_us" class="form-control" value="<?php echo $fila['apellido_us'];?>" required><br>
       </div>
-      <div class="form-group">
-        <label for="n_documento_us" class="col-sm-2 control-label">Número de Documento</label>
-        <input type="text" name="n_documento_us" id="n_documento_us" class="form-control" value="<?php echo $fila['n_documento_us']; ?>" required>
-      </div>
+      <div class="form-group"><br>
+        <label for="n_documento_us" class="col-sm-2 control-label">Número de Documento</label><br>
+        <input type="text" name="n_documento_us" id="n_documento_us" disabled class="form-control" value="<?php echo $fila['n_documento_us']; ?>"  required>
+      </div><br>
       
 
       <div class="form-group">
-        <label for="nombre_estado" class="col-sm-2 control-label">Estado</label>
+        <label for="nombre_estado" class="col-sm-2 control-label">Estado</label><br>
         <select name="nombre_estado" id="nombre_estado" class="form-control">
-          <option value="0">>-------Seleecione el estado--------<</option>
             <?php
             $sql = $conexion->query("SELECT id_estado, nombre_estado FROM estado");
             while ($resultado = $sql->fetch_assoc()) {
@@ -193,13 +216,35 @@ if ($conexion->connect_error) {
             }
             ?>
         </select>
-        </div>
+        </div><br><br>
+         <style>
+          .btnguardar{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 80px;
+            height: 40px;
+
+          }
+          .btnregr{
+            background-color: skyblue; 
+            border-radius: 20px;
+            color:white;
+            border: none;
+            width: 80px;
+            height: 40px;
             
+          }
+          .btnregr a{
+          text-decoration:none;
+        }
+         </style>   
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <center>
-                    <a href="./GuiadeEnvio.php" class="btn btn-info">Regresar</a>
-                    <button type="submit" class="btn btn-info">Guardar</button>
+                    <button class="btnregr"><a href="./GuiadeEnvio.php" ><b>Regresar</b></a></button>
+                    <button type="submit" class="btnguardar"><b>Guardar</b></button>
                 </center>
             </div>
         </div>

@@ -21,7 +21,12 @@
 <?php
 $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
 
-$ID = $_GET['idCat'];
+$ID = $_GET['idCat'] ?? null;
+if ($ID) {
+    // Realiza alguna acción con $ID
+}
+
+
 
 $sqldocumento = "SELECT
 e.id_envio,
