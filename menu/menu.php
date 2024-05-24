@@ -19,7 +19,7 @@
         </div>
         <!-- PROFILE -->
         <div id="profile">
-            <div id="photo"><img src="../img/user-solid.png" alt="" ></div>
+            <div id="photo"><img src="../img/usu.png" alt="" ></div>
             <div id="name"><span>Administrador</span></div>
         </div>
         <div id="menu-items">

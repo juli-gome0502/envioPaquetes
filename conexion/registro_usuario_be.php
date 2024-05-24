@@ -21,10 +21,7 @@ function validarNombre($nombre_us) {
     return preg_match($patron, $apellido_us);
   }
   
-  function validarDocumento($n_Documento_us) {
-    $patron = "/^\d{8}$|^\d{10}$/"; // Regular expression for 8 or 10 digits
-    return preg_match($patron, $n_Documento_us);
-}
+
   
   function validarDireccion($direccion) {
     $patron = "/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\s,\.\-]+$/"; // Regular expression for addresses
@@ -78,9 +75,8 @@ if (!validarApellido($apellido_us)) {
     $errores[] = "El apellido no es válido. Debe contener solo letras y espacios.";
 }
 
-if (!validarDocumento($n_Documento_us)) {
-    $errores[] = "El número de documento no es válido para el tipo de documento seleccionado.";
-}
+
+
 
 if (!validarDireccion($Direccion)) {
     $errores[] = "La dirección no es válida. Debe contener solo letras, números, espacios, comas, guiones y puntos.";

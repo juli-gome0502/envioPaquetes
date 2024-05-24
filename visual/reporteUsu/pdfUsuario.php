@@ -342,7 +342,7 @@ background-color: black;
         
         <?php
  if (isset($_POST['mostrar'])) {
-        $detinoSeleccionado = $_POST["cat"];
+        $destinoSeleccionado = $_POST["cat"];
 
         // Consulta SQL modificada para filtrar por el número de documento seleccionado
 
@@ -378,7 +378,7 @@ INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
 INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
 INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
 INNER JOIN estado est ON e.id_estado = est.id_estado 
-        WHERE ds.id_destino = $detinoSeleccionado";
+        WHERE ds.id_destino = $destinoSeleccionado";
 
         $EnvioResult = mysqli_query($conexion, $sqlDestino);
 
@@ -436,6 +436,7 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
                     } catch(PDOException $error) {
                     $error = $error->getMessage();
                 }
+                $conexion = new mysqli('localhost', 'root', '', 'bd_safe_delivery2');
                 if (isset($_POST['nombre_destinatario']) && !empty($_POST['nombre_destinatario'])) {
                     $sqlEnvio = "SELECT
                     e.id_envio,
@@ -468,7 +469,7 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
                     INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
                     INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
                     INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
-                    INNER JOIN estado est ON e.id_estado = est.id_estado WHERE d.nombre_destinatario LIKE '%" . $_POST['nombre_destinatario'] . "%'";
+                    INNER JOIN estado est ON e.id_estado = est.id_estado WHERE e.id_usuario=$id_usuario and d.nombre_destinatario LIKE '%" . $_POST['nombre_destinatario'] . "%'";
                 } else {
                     $sqlEnvio = "SELECT
                     e.id_envio,
@@ -501,20 +502,10 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
                     INNER JOIN tipo_paquete tp ON e.id_tipo_paquete = tp.id_tipo_paquete
                     INNER JOIN tipo_peso ps ON e.id_tipo_peso = ps.id_tipo_peso
                     INNER JOIN vehiculo v ON e.id_vehiculo = v.id_vehiculo
-                    INNER JOIN estado est ON e.id_estado = est.id_estado";
+                    INNER JOIN estado est ON e.id_estado = est.id_estado WHERE e.id_usuario = $id_usuario ";
                 }
                         // Pagination variables (ajústalas según sea necesario)
-                        $records_per_page = 8; // Número de registros por página
-                        $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Obtener la página actual desde la URL o establecerla en 1
-                        $stmt = $conexion->prepare($sqlEnvio);
-                        $stmt->execute();
-                        $total_records = $stmt->rowCount(); // Obtener el número total de registros
-                        $total_pages = ceil($total_records / $records_per_page); // Calcular el total de páginas
-                        // Limitar la consulta según la página actual
-                        $offset = ($current_page - 1) * $records_per_page;
-                        $sqlEnvio .= " LIMIT $offset, $records_per_page";
-                        $envio = $conexion->query($sql);
-                        $id_envio_array = array();
+                        $EnvioResult = mysqli_query($conexion, $sqlEnvio);
                     // Check if there are any results   
                         foreach ($EnvioResult as $fila){
                             $id_envio_array[] = $fila['id_envio'];
@@ -568,18 +559,7 @@ INNER JOIN estado est ON e.id_estado = est.id_estado
                     justify-content: center;
                 }
             </style>
-            <div class="navPag">
-                <!-- Paginación de Bootstrap -->
-                <nav aria-label="Page navigation">
-                    <ul class="pagination pagination-sm">
-                        <?php
-                        for ($i = 1; $i <= $total_pages; $i++) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-                        }
-                        ?>
-                    </ul>
-                </nav>
-            </div>
+            
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         
             <style>
